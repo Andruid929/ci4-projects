@@ -1,0 +1,165 @@
+CRITICAL - 2026-03-16 08:16:04 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: customer]
+in APPPATH\Views\home.php on line 10.
+ 1 APPPATH\Views\home.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'D:\\PHP projects\\Code-on-fire\\app\\Views\\home.php', 10)
+ 2 SYSTEMPATH\View\View.php(238): include('D:\\PHP projects\\Code-on-fire\\app\\Views\\home.php')
+ 3 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('home', [], true)
+ 5 APPPATH\Controllers\WelcomeUser.php(10): view('home')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\WelcomeUser->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\WelcomeUser))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-16 08:20:15 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: customer]
+in APPPATH\Views\home.php on line 10.
+ 1 APPPATH\Views\home.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'D:\\PHP projects\\Code-on-fire\\app\\Views\\home.php', 10)
+ 2 SYSTEMPATH\View\View.php(238): include('D:\\PHP projects\\Code-on-fire\\app\\Views\\home.php')
+ 3 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('home', [], true)
+ 5 APPPATH\Controllers\WelcomeUser.php(10): view('home')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\WelcomeUser->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\WelcomeUser))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-16 08:20:48 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: customer]
+in APPPATH\Views\home.php on line 10.
+ 1 APPPATH\Views\home.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'D:\\PHP projects\\Code-on-fire\\app\\Views\\home.php', 10)
+ 2 SYSTEMPATH\View\View.php(238): include('D:\\PHP projects\\Code-on-fire\\app\\Views\\home.php')
+ 3 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('home', [], true)
+ 5 APPPATH\Controllers\WelcomeUser.php(10): view('home')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\WelcomeUser->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\WelcomeUser))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-16 08:20:51 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: customer]
+in APPPATH\Views\home.php on line 10.
+ 1 APPPATH\Views\home.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'D:\\PHP projects\\Code-on-fire\\app\\Views\\home.php', 10)
+ 2 SYSTEMPATH\View\View.php(238): include('D:\\PHP projects\\Code-on-fire\\app\\Views\\home.php')
+ 3 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('home', [], true)
+ 5 APPPATH\Controllers\WelcomeUser.php(10): view('home')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\WelcomeUser->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\WelcomeUser))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-16 08:21:12 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: customer]
+in APPPATH\Views\home.php on line 10.
+ 1 APPPATH\Views\home.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'D:\\PHP projects\\Code-on-fire\\app\\Views\\home.php', 10)
+ 2 SYSTEMPATH\View\View.php(238): include('D:\\PHP projects\\Code-on-fire\\app\\Views\\home.php')
+ 3 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('home', [], true)
+ 5 APPPATH\Controllers\WelcomeUser.php(10): view('home')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\WelcomeUser->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\WelcomeUser))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-16 08:23:29 --> ErrorException: Attempt to read property "first_name" on null
+[Method: POST, Route: login]
+in APPPATH\Controllers\Validation.php on line 94.
+ 1 APPPATH\Controllers\Validation.php(94): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "first_name" on null', 'D:\\PHP projects\\Code-on-fire\\app\\Controllers\\Validation.php', 94)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Validation->signIn()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Validation))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-16 08:24:04 --> ErrorException: Attempt to read property "first_name" on null
+[Method: POST, Route: login]
+in APPPATH\Controllers\Validation.php on line 94.
+ 1 APPPATH\Controllers\Validation.php(94): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "first_name" on null', 'D:\\PHP projects\\Code-on-fire\\app\\Controllers\\Validation.php', 94)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Validation->signIn()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Validation))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-16 08:25:08 --> ErrorException: Attempt to read property "first_name" on null
+[Method: POST, Route: login]
+in APPPATH\Controllers\Validation.php on line 94.
+ 1 APPPATH\Controllers\Validation.php(94): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "first_name" on null', 'D:\\PHP projects\\Code-on-fire\\app\\Controllers\\Validation.php', 94)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Validation->signIn()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Validation))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-16 08:55:44 --> ErrorException: Undefined array key 0
+[Method: POST, Route: login]
+in APPPATH\Controllers\Validation.php on line 123.
+ 1 APPPATH\Controllers\Validation.php(123): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'D:\\PHP projects\\Code-on-fire\\app\\Controllers\\Validation.php', 123)
+ 2 APPPATH\Controllers\Validation.php(115): App\Controllers\Validation->redirectBackWithErrors([...])
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Validation->signIn()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Validation))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-16 08:55:50 --> ErrorException: foreach() argument must be of type array|object, string given
+[Method: GET, Route: signin]
+in APPPATH\Views\sign_in.php on line 18.
+ 1 APPPATH\Views\sign_in.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, string given', 'D:\\PHP projects\\Code-on-fire\\app\\Views\\sign_in.php', 18)
+ 2 SYSTEMPATH\View\View.php(238): include('D:\\PHP projects\\Code-on-fire\\app\\Views\\sign_in.php')
+ 3 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('sign_in', [], true)
+ 5 APPPATH\Controllers\SignInPage.php(10): view('sign_in')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\SignInPage->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SignInPage))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-16 09:20:57 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: user]
+in APPPATH\Views\home.php on line 10.
+ 1 APPPATH\Views\home.php(10): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'D:\\PHP projects\\Code-on-fire\\app\\Views\\home.php', 10)
+ 2 SYSTEMPATH\View\View.php(238): include('D:\\PHP projects\\Code-on-fire\\app\\Views\\home.php')
+ 3 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('home', [], true)
+ 5 APPPATH\Controllers\WelcomeUser.php(10): view('home')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\WelcomeUser->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\WelcomeUser))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-16 09:27:56 --> ErrorException: Undefined array key "username"
+[Method: GET, Route: user]
+in APPPATH\Views\home.php on line 11.
+ 1 APPPATH\Views\home.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "username"', 'D:\\PHP projects\\Code-on-fire\\app\\Views\\home.php', 11)
+ 2 SYSTEMPATH\View\View.php(238): include('D:\\PHP projects\\Code-on-fire\\app\\Views\\home.php')
+ 3 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('home', [], true)
+ 5 APPPATH\Controllers\WelcomeUser.php(10): view('home')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\WelcomeUser->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\WelcomeUser))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')

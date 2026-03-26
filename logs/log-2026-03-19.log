@@ -1,0 +1,504 @@
+CRITICAL - 2026-03-19 07:59:02 --> CodeIgniter\Exceptions\CriticalError: The required PHP extension "mysqli" is not loaded. Install and enable it to use "MySQLi" driver.
+[Method: GET, Route: my]
+in SYSTEMPATH\Database\Database.php on line 186.
+ 1 SYSTEMPATH\Database\Database.php(59): CodeIgniter\Database\Database->checkDbExtension('MySQLi')
+ 2 SYSTEMPATH\Database\Config.php(82): CodeIgniter\Database\Database->load([...], 'alternate')
+ 3 APPPATH\Controllers\Home.php(17): CodeIgniter\Database\Config::connect('alternate')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-19 08:00:47 --> CodeIgniter\Exceptions\CriticalError: The required PHP extension "mysqli" is not loaded. Install and enable it to use "MySQLi" driver.
+[Method: GET, Route: my]
+in SYSTEMPATH\Database\Database.php on line 186.
+ 1 SYSTEMPATH\Database\Database.php(59): CodeIgniter\Database\Database->checkDbExtension('MySQLi')
+ 2 SYSTEMPATH\Database\Config.php(82): CodeIgniter\Database\Database->load([...], 'alternate')
+ 3 APPPATH\Controllers\Home.php(17): CodeIgniter\Database\Config::connect('alternate')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-19 08:00:54 --> CodeIgniter\Exceptions\CriticalError: The required PHP extension "mysqli" is not loaded. Install and enable it to use "MySQLi" driver.
+[Method: GET, Route: my]
+in SYSTEMPATH\Database\Database.php on line 186.
+ 1 SYSTEMPATH\Database\Database.php(59): CodeIgniter\Database\Database->checkDbExtension('MySQLi')
+ 2 SYSTEMPATH\Database\Config.php(82): CodeIgniter\Database\Database->load([...], 'alternate')
+ 3 APPPATH\Controllers\Home.php(17): CodeIgniter\Database\Config::connect('alternate')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+ERROR - 2026-03-19 08:03:32 --> Error connecting to the database: TypeError: str_replace(): Argument #1 ($search) must be of type array|string, bool given in D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(229): str_replace(false, '****', 'mysqli::real_co...')
+#1 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\BaseConnection.php(654): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `smart`\n...', Array, false)
+#4 D:\PHP projects\Code-on-fire\app\Controllers\Home.php(21): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\CodeIgniter.php(951): App\Controllers\Home->runner()
+#6 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#9 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 D:\PHP projects\Code-on-fire\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('D:\\PHP projects...')
+#12 {main}
+CRITICAL - 2026-03-19 08:03:32 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: str_replace(): Argument #1 ($search) must be of type array|string, bool given
+[Method: GET, Route: my]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(654): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `smart`
+FROM `vumba`
+WHERE `name` = :name:', [...], false)
+ 3 APPPATH\Controllers\Home.php(21): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+ERROR - 2026-03-19 08:36:03 --> Error connecting to the database: TypeError: str_replace(): Argument #1 ($search) must be of type array|string, bool given in D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(229): str_replace(false, '****', 'mysqli::real_co...')
+#1 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\BaseConnection.php(654): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `smart`\n...', Array, false)
+#4 D:\PHP projects\Code-on-fire\app\Controllers\Home.php(21): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\CodeIgniter.php(951): App\Controllers\Home->runner()
+#6 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#9 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 D:\PHP projects\Code-on-fire\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('D:\\PHP projects...')
+#12 {main}
+CRITICAL - 2026-03-19 08:36:03 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: str_replace(): Argument #1 ($search) must be of type array|string, bool given
+[Method: GET, Route: my]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(654): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `smart`
+FROM `vumba`
+WHERE `name` = :name:', [...], false)
+ 3 APPPATH\Controllers\Home.php(21): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+ERROR - 2026-03-19 08:36:04 --> Error connecting to the database: TypeError: str_replace(): Argument #1 ($search) must be of type array|string, bool given in D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(229): str_replace(false, '****', 'mysqli::real_co...')
+#1 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\BaseConnection.php(654): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `smart`\n...', Array, false)
+#4 D:\PHP projects\Code-on-fire\app\Controllers\Home.php(21): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\CodeIgniter.php(951): App\Controllers\Home->runner()
+#6 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#9 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 D:\PHP projects\Code-on-fire\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('D:\\PHP projects...')
+#12 {main}
+CRITICAL - 2026-03-19 08:36:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: str_replace(): Argument #1 ($search) must be of type array|string, bool given
+[Method: GET, Route: my]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(654): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `smart`
+FROM `vumba`
+WHERE `name` = :name:', [...], false)
+ 3 APPPATH\Controllers\Home.php(21): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+ERROR - 2026-03-19 09:34:11 --> Error connecting to the database: TypeError: str_replace(): Argument #1 ($search) must be of type array|string, bool given in D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(229): str_replace(false, '****', 'mysqli::real_co...')
+#1 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\BaseConnection.php(654): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `smart`\n...', Array, false)
+#4 D:\PHP projects\Code-on-fire\app\Controllers\Home.php(21): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\CodeIgniter.php(951): App\Controllers\Home->runner()
+#6 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#9 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 D:\PHP projects\Code-on-fire\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('D:\\PHP projects...')
+#12 {main}
+CRITICAL - 2026-03-19 09:34:11 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: str_replace(): Argument #1 ($search) must be of type array|string, bool given
+[Method: GET, Route: my]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(654): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `smart`
+FROM `vumba`
+WHERE `name` = :name:', [...], false)
+ 3 APPPATH\Controllers\Home.php(21): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+ERROR - 2026-03-19 09:34:11 --> Error connecting to the database: TypeError: str_replace(): Argument #1 ($search) must be of type array|string, bool given in D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(229): str_replace(false, '****', 'mysqli::real_co...')
+#1 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\BaseConnection.php(654): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `smart`\n...', Array, false)
+#4 D:\PHP projects\Code-on-fire\app\Controllers\Home.php(21): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\CodeIgniter.php(951): App\Controllers\Home->runner()
+#6 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#9 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 D:\PHP projects\Code-on-fire\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('D:\\PHP projects...')
+#12 {main}
+CRITICAL - 2026-03-19 09:34:11 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: str_replace(): Argument #1 ($search) must be of type array|string, bool given
+[Method: GET, Route: my]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(654): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `smart`
+FROM `vumba`
+WHERE `name` = :name:', [...], false)
+ 3 APPPATH\Controllers\Home.php(21): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+ERROR - 2026-03-19 09:37:24 --> Error connecting to the database: TypeError: str_replace(): Argument #1 ($search) must be of type array|string, bool given in D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(229): str_replace(false, '****', 'mysqli::real_co...')
+#1 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\BaseConnection.php(654): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\PHP projects\Code-on-fire\app\Controllers\Home.php(21): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\CodeIgniter.php(951): App\Controllers\Home->runner()
+#6 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#9 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 D:\PHP projects\Code-on-fire\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 D:\PHP projects\Code-on-fire\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('D:\\PHP projects...')
+#12 {main}
+CRITICAL - 2026-03-19 09:37:24 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: str_replace(): Argument #1 ($search) must be of type array|string, bool given
+[Method: GET, Route: my]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(654): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vumba`
+WHERE `name` = :name:', [...], false)
+ 3 APPPATH\Controllers\Home.php(21): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+ERROR - 2026-03-19 10:03:34 --> pg_query(): Query failed: ERROR:  relation &quot;vumba&quot; does not exist
+LINE 1: SELECT * FROM vumba where name = 'Andrew'
+                      ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 200.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\Postgre\Connection->execute('SELECT * FROM vumba where name = \'Andrew\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM vumba where name = \'Andrew\'')
+ 3 APPPATH\Controllers\Home.php(17): CodeIgniter\Database\BaseConnection->query('SELECT * FROM vumba where name = \'Andrew\'')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-19 10:03:34 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;vumba&quot; does not exist
+LINE 1: SELECT * FROM vumba where name = 'Andrew'
+                      ^
+[Method: GET, Route: my]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 APPPATH\Controllers\Home.php(17): CodeIgniter\Database\BaseConnection->query('SELECT * FROM vumba where name = \'Andrew\'')
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-19 10:03:34 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;vumba&quot; does not exist
+LINE 1: SELECT * FROM vumba where name = 'Andrew'
+                      ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 212.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\Postgre\Connection->execute('SELECT * FROM vumba where name = \'Andrew\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM vumba where name = \'Andrew\'')
+ 3 APPPATH\Controllers\Home.php(17): CodeIgniter\Database\BaseConnection->query('SELECT * FROM vumba where name = \'Andrew\'')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-19 10:03:34 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;vumba&quot; does not exist
+LINE 1: SELECT * FROM vumba where name = 'Andrew'
+                      ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 200.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Query failed: ERROR:  relation &quot;vumba&quot; does not exist
+LINE 1: SELECT * FROM vumba where name = \'Andrew\'
+                      ^', 'D:\\PHP projects\\Code-on-fire\\vendor\\codeigniter4\\framework\\system\\Database\\Postgre\\Connection.php', 200)
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(200): pg_query(Object(PgSql\Connection), 'SELECT * FROM vumba where name = \'Andrew\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\Postgre\Connection->execute('SELECT * FROM vumba where name = \'Andrew\'')
+ 4 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM vumba where name = \'Andrew\'')
+ 5 APPPATH\Controllers\Home.php(17): CodeIgniter\Database\BaseConnection->query('SELECT * FROM vumba where name = \'Andrew\'')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+ERROR - 2026-03-19 10:03:35 --> pg_query(): Query failed: ERROR:  relation &quot;vumba&quot; does not exist
+LINE 1: SELECT * FROM vumba where name = 'Andrew'
+                      ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 200.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\Postgre\Connection->execute('SELECT * FROM vumba where name = \'Andrew\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM vumba where name = \'Andrew\'')
+ 3 APPPATH\Controllers\Home.php(17): CodeIgniter\Database\BaseConnection->query('SELECT * FROM vumba where name = \'Andrew\'')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-19 10:03:35 --> CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;vumba&quot; does not exist
+LINE 1: SELECT * FROM vumba where name = 'Andrew'
+                      ^
+[Method: GET, Route: my]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 APPPATH\Controllers\Home.php(17): CodeIgniter\Database\BaseConnection->query('SELECT * FROM vumba where name = \'Andrew\'')
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-19 10:03:35 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: pg_query(): Query failed: ERROR:  relation &quot;vumba&quot; does not exist
+LINE 1: SELECT * FROM vumba where name = 'Andrew'
+                      ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 212.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\Postgre\Connection->execute('SELECT * FROM vumba where name = \'Andrew\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM vumba where name = \'Andrew\'')
+ 3 APPPATH\Controllers\Home.php(17): CodeIgniter\Database\BaseConnection->query('SELECT * FROM vumba where name = \'Andrew\'')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-19 10:03:35 --> [Caused by] ErrorException: pg_query(): Query failed: ERROR:  relation &quot;vumba&quot; does not exist
+LINE 1: SELECT * FROM vumba where name = 'Andrew'
+                      ^
+in SYSTEMPATH\Database\Postgre\Connection.php on line 200.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'pg_query(): Query failed: ERROR:  relation &quot;vumba&quot; does not exist
+LINE 1: SELECT * FROM vumba where name = \'Andrew\'
+                      ^', 'D:\\PHP projects\\Code-on-fire\\vendor\\codeigniter4\\framework\\system\\Database\\Postgre\\Connection.php', 200)
+ 2 SYSTEMPATH\Database\Postgre\Connection.php(200): pg_query(Object(PgSql\Connection), 'SELECT * FROM vumba where name = \'Andrew\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\Postgre\Connection->execute('SELECT * FROM vumba where name = \'Andrew\'')
+ 4 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM vumba where name = \'Andrew\'')
+ 5 APPPATH\Controllers\Home.php(17): CodeIgniter\Database\BaseConnection->query('SELECT * FROM vumba where name = \'Andrew\'')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-19 10:05:10 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: my]
+in APPPATH\Views\temp.php on line 6.
+ 1 APPPATH\Views\temp.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'D:\\PHP projects\\Code-on-fire\\app\\Views\\temp.php', 6)
+ 2 SYSTEMPATH\View\View.php(238): include('D:\\PHP projects\\Code-on-fire\\app\\Views\\temp.php')
+ 3 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('temp', [], true)
+ 5 APPPATH\Controllers\Home.php(23): view('temp')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-19 10:05:10 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: my]
+in APPPATH\Views\temp.php on line 6.
+ 1 APPPATH\Views\temp.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'D:\\PHP projects\\Code-on-fire\\app\\Views\\temp.php', 6)
+ 2 SYSTEMPATH\View\View.php(238): include('D:\\PHP projects\\Code-on-fire\\app\\Views\\temp.php')
+ 3 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('temp', [], true)
+ 5 APPPATH\Controllers\Home.php(23): view('temp')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-19 10:09:08 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: my]
+in APPPATH\Views\temp.php on line 6.
+ 1 APPPATH\Views\temp.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'D:\\PHP projects\\Code-on-fire\\app\\Views\\temp.php', 6)
+ 2 SYSTEMPATH\View\View.php(238): include('D:\\PHP projects\\Code-on-fire\\app\\Views\\temp.php')
+ 3 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('temp', [], true)
+ 5 APPPATH\Controllers\Home.php(27): view('temp')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-19 10:09:09 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: my]
+in APPPATH\Views\temp.php on line 6.
+ 1 APPPATH\Views\temp.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'D:\\PHP projects\\Code-on-fire\\app\\Views\\temp.php', 6)
+ 2 SYSTEMPATH\View\View.php(238): include('D:\\PHP projects\\Code-on-fire\\app\\Views\\temp.php')
+ 3 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('temp', [], true)
+ 5 APPPATH\Controllers\Home.php(27): view('temp')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-19 10:21:03 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: my]
+in APPPATH\Views\temp.php on line 6.
+ 1 APPPATH\Views\temp.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'D:\\PHP projects\\Code-on-fire\\app\\Views\\temp.php', 6)
+ 2 SYSTEMPATH\View\View.php(238): include('D:\\PHP projects\\Code-on-fire\\app\\Views\\temp.php')
+ 3 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('temp', [], true)
+ 5 APPPATH\Controllers\Home.php(24): view('temp')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-19 10:21:04 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: my]
+in APPPATH\Views\temp.php on line 6.
+ 1 APPPATH\Views\temp.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'D:\\PHP projects\\Code-on-fire\\app\\Views\\temp.php', 6)
+ 2 SYSTEMPATH\View\View.php(238): include('D:\\PHP projects\\Code-on-fire\\app\\Views\\temp.php')
+ 3 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('temp', [], true)
+ 5 APPPATH\Controllers\Home.php(24): view('temp')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-19 10:25:22 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: my]
+in APPPATH\Views\temp.php on line 6.
+ 1 APPPATH\Views\temp.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'D:\\PHP projects\\Code-on-fire\\app\\Views\\temp.php', 6)
+ 2 SYSTEMPATH\View\View.php(238): include('D:\\PHP projects\\Code-on-fire\\app\\Views\\temp.php')
+ 3 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('temp', [], true)
+ 5 APPPATH\Controllers\Home.php(24): view('temp')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-19 10:25:22 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: my]
+in APPPATH\Views\temp.php on line 6.
+ 1 APPPATH\Views\temp.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'D:\\PHP projects\\Code-on-fire\\app\\Views\\temp.php', 6)
+ 2 SYSTEMPATH\View\View.php(238): include('D:\\PHP projects\\Code-on-fire\\app\\Views\\temp.php')
+ 3 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('temp', [], true)
+ 5 APPPATH\Controllers\Home.php(24): view('temp')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-19 10:26:29 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: my]
+in APPPATH\Views\temp.php on line 6.
+ 1 APPPATH\Views\temp.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'D:\\PHP projects\\Code-on-fire\\app\\Views\\temp.php', 6)
+ 2 SYSTEMPATH\View\View.php(238): include('D:\\PHP projects\\Code-on-fire\\app\\Views\\temp.php')
+ 3 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('temp', [], true)
+ 5 APPPATH\Controllers\Home.php(24): view('temp')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-19 10:26:30 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: my]
+in APPPATH\Views\temp.php on line 6.
+ 1 APPPATH\Views\temp.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'D:\\PHP projects\\Code-on-fire\\app\\Views\\temp.php', 6)
+ 2 SYSTEMPATH\View\View.php(238): include('D:\\PHP projects\\Code-on-fire\\app\\Views\\temp.php')
+ 3 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('temp', [], true)
+ 5 APPPATH\Controllers\Home.php(24): view('temp')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
+CRITICAL - 2026-03-19 10:29:50 --> ErrorException: Attempt to read property "smart" on null
+[Method: GET, Route: my]
+in APPPATH\Controllers\Home.php on line 21.
+ 1 APPPATH\Controllers\Home.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "smart" on null', 'D:\\PHP projects\\Code-on-fire\\app\\Controllers\\Home.php', 21)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Home->runner()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')

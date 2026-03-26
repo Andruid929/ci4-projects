@@ -1,0 +1,11 @@
+CRITICAL - 2026-03-23 11:13:07 --> ErrorException: Undefined property: stdClass::$hashed_password
+[Method: POST, Route: login]
+in APPPATH\Controllers\Validation.php on line 120.
+ 1 APPPATH\Controllers\Validation.php(120): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$hashed_password', 'D:\\PHP projects\\Code-on-fire\\app\\Controllers\\Validation.php', 120)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Validation->signIn()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Validation))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('D:\\PHP projects\\Code-on-fire\\public\\index.php')
