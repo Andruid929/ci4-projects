@@ -1,0 +1,125 @@
+h2 {
+    text-align: center;
+    font-weight: bold;
+}
+
+.form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.checkbox {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.form-group.checkbox label {
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.form-input {
+    padding: 0.75rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.form-input:hover {
+    border-color: #bbb;
+}
+
+textarea.form-input {
+    resize: vertical;
+    min-height: 120px;
+}
+
+select.form-input {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+}
+
+.form-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #007bff;
+}
+
+.form-button {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.form-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.form-button:active {
+    transform: translateY(0);
+}
+
+.form-input.error {
+    border-color: #dc3545;
+    background-color: #fff5f5;
+}
+
+.form-input.error:focus {
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+    border-color: #dc3545;
+}
+
+.form-error {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.form-input.success {
+    border-color: #28a745;
+}
+
+.form-input.success:focus {
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+    border-color: #28a745;
+}
