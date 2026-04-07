@@ -13,6 +13,11 @@ use CodeIgniter\Filters\PageCache;
 use CodeIgniter\Filters\PerformanceMetrics;
 use CodeIgniter\Filters\SecureHeaders;
 
+use App\Core\Filters\GuestFilter;
+use App\Core\Filters\UserFilter;
+use App\Core\Filters\Auth\AdminFilter;
+use App\Core\Filters\Auth\StandardFilter;
+
 class Filters extends BaseFilters
 {
     /**
@@ -25,15 +30,19 @@ class Filters extends BaseFilters
      * or [filter_name => [classname1, classname2, ...]]
      */
     public array $aliases = [
-        'csrf'          => CSRF::class,
-        'toolbar'       => DebugToolbar::class,
-        'honeypot'      => Honeypot::class,
-        'invalidchars'  => InvalidChars::class,
+        'csrf' => CSRF::class,
+        'toolbar' => DebugToolbar::class,
+        'honeypot' => Honeypot::class,
+        'invalidchars' => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'cors'          => Cors::class,
-        'forcehttps'    => ForceHTTPS::class,
-        'pagecache'     => PageCache::class,
-        'performance'   => PerformanceMetrics::class,
+        'cors' => Cors::class,
+        'forcehttps' => ForceHTTPS::class,
+        'pagecache' => PageCache::class,
+        'performance' => PerformanceMetrics::class,
+        'guest' => GuestFilter::class,
+        'userFilter' => UserFilter::class,
+        'standardUser' => StandardFilter::class,
+        'admin' => AdminFilter::class
     ];
 
     /**
