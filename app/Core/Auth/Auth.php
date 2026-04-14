@@ -5,6 +5,7 @@ namespace App\Core\Auth;
 use App\Controllers\BaseController;
 use App\Models\UserModel;
 use App\Util\RedirectUtil;
+use App\Logging\LogToDisk;
 
 class Auth extends BaseController
 {
@@ -44,6 +45,15 @@ class Auth extends BaseController
             }
 
             if (!$userModel->verifyPassword($givenEmail, $givenPassword)) {
+
+                LogToDisk::logSignInAttempt(
+                    [
+                        "email" => $givenEmail,
+                        "ip_address" => $this->request->getIPAddress(),
+                        "browser" => $this->request->getUserAgent(),
+                    ]
+                );
+
                 return RedirectUtil::redirectBackWithErrors(["Invalid password"]);
             }
 
@@ -59,6 +69,14 @@ class Auth extends BaseController
                 "lastActivity" => $user["last_activity"],
                 "isLoggedIn" => true
             ]);
+
+            LogToDisk::logSignIn(
+                [
+                    "email" => $givenEmail,
+                    "ip_address" => $this->request->getIPAddress(),
+                    "browser" => $this->request->getUserAgent()
+                ]
+            );
 
             return RedirectUtil::redirectWithData(
                 "dashboard",

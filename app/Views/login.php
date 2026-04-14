@@ -13,36 +13,16 @@
     <h1>Login to the portal</h1>
 
     <?php
-    $errors = session()->getFlashdata('errors');
+    use App\Util\UserMessageDisplay;
 
-    $success = session()->getFlashdata('success');
-
-    if (!empty($errors)) {
-
-        echo '<div class="error-div">';
-
-        foreach ($errors as $error) {
-            echo '<p class="per-error-message">' . $error . '</p>';
-        }
-
-        echo '</div>';
-    }
-
-    if (!empty($success)) {
-
-        echo '<div class="success-div">';
-
-        foreach ($success as $s) {
-            echo '<p class="per-success-message">' . $s . '</p>';
-        }
-
-        echo '</div>';
-    }
+    UserMessageDisplay::displayMessages();
     ?>
 
     <div class="form-container">
 
         <form method="POST" action="<?= site_url("login/submit") ?>" class="form">
+        
+            <?= csrf_field() ?>
 
             <div class="form-group">
 
@@ -56,6 +36,8 @@
             </div>
 
             <button class="form-button" type="submit">Login</button>
+
+            <p>Don't have an account? <a href="<?= site_url("signup") ?>">Sign up</a>.</p>
         </form>
 
     </div>

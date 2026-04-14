@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Exceptions\UserNotFoundException;
 use CodeIgniter\Model;
 
 class UserModel extends Model
@@ -28,7 +27,8 @@ class UserModel extends Model
     {
         if(isset($data["data"]["password"])) {
 
-            $data["data"]["password"] = password_hash($data["data"]["password"], PASSWORD_BCRYPT);
+            $data["data"]["password"] = password_hash($data["data"]["password"],
+             PASSWORD_BCRYPT);
 
         }
 
@@ -40,7 +40,6 @@ class UserModel extends Model
         $user = $this->getUserByEmail($email);
 
         $id = $user["id"];
-
         
         if (!password_verify($plainPassword, $user["password"])) {
             $this->updateLastActivity($id);

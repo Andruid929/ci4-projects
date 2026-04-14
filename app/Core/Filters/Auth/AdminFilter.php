@@ -10,7 +10,8 @@ class AdminFilter implements FilterInterface
     public function before($request, $arguments = null)
     {
         if (session()->get("role") && session()->get("role") !== "admin") {
-            return RedirectUtil::redirectWithErrors("dashboard", ["You don't have permission to access the admin dashboard."]);
+            return RedirectUtil::redirectWithErrors("dashboard",
+             ["You don't have permission to access the admin dashboard."]);
         }
     }
 
