@@ -39,6 +39,8 @@ class Autoload extends AutoloadConfig
      */
     public $psr4 = [
         APP_NAMESPACE => APPPATH,
+        'App\Modules\Projects' => APPPATH . 'Modules/Projects',
+        'App\Modules\Tasks' => APPPATH . 'Modules/Tasks',
     ];
 
     /**
@@ -88,5 +90,7 @@ class Autoload extends AutoloadConfig
      *
      * @var list<string>
      */
-    public $helpers = [];
+    public $helpers = [
+        'form'
+    ];
 }
