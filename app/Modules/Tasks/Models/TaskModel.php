@@ -2,7 +2,7 @@
 
 namespace App\Modules\Tasks\Models;
 
-class TaskModel extends \App\Models\CoreModel
+class TaskModel extends \App\Core\Models\CoreModel
 {
 
     protected $table = "task";

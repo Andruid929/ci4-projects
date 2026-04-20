@@ -2,7 +2,7 @@
 
 namespace App\Modules\Projects\Models;
 
-class ProjectModel extends \App\Models\CoreModel
+class ProjectModel extends \App\Core\Models\CoreModel
 {
 
     protected $table = "project";

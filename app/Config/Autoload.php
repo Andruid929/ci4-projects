@@ -41,6 +41,7 @@ class Autoload extends AutoloadConfig
         APP_NAMESPACE => APPPATH,
         'App\Modules\Projects' => APPPATH . 'Modules/Projects',
         'App\Modules\Tasks' => APPPATH . 'Modules/Tasks',
+        'App\Core\Commands' => APPPATH . 'Core\Commands',
     ];
 
     /**

@@ -3,7 +3,7 @@
 namespace App\Core\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\CoreModel;
+use App\Core\Models\CoreModel;
 
 class CoreController extends BaseController
 {

@@ -38,7 +38,7 @@ class HtmlHelper
 
         if (!empty($success)): ?>
 
-            <div class="error-div">
+            <div class="success-div">
 
                 <?php foreach ($success as $s): ?>
                     <p class="per-success-message"> <?= $s ?> </p>

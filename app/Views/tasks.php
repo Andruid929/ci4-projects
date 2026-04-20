@@ -14,7 +14,8 @@
         <?php
         use App\Core\Helpers\HtmlHelper;
         use App\Core\Helpers\JsScriptHelper;
-        use App\Modules\Tasks\Models\TaskModel;
+                                    use App\Core\Helpers\QueryListHelper;
+                                    use App\Modules\Tasks\Models\TaskModel;
 
         HtmlHelper::renderHeader('Tasks', 'Manage your tasks');
 
@@ -41,9 +42,7 @@
             <tbody>
 
                 <?php
-                $taskModel = new TaskModel();
-
-                $tasks = $taskModel->getAll();
+                $tasks = QueryListHelper::queryList("Task");
 
                 if (empty($tasks)): ?>
                     <tr>

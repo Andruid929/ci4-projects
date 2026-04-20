@@ -13,7 +13,7 @@
         <?php
         use App\Core\Helpers\HtmlHelper;
         use App\Core\Helpers\JsScriptHelper;
-        use App\Modules\Projects\Models\ProjectModel;
+        use App\Core\Helpers\QueryListHelper;
 
         HtmlHelper::renderHeader("Projects", "Manage your projects");
 
@@ -38,9 +38,8 @@
             <tbody>
 
                 <?php
-                $projectModel = new ProjectModel();
 
-                $projects = $projectModel->getAll();
+                $projects = QueryListHelper::queryList("Project");
 
                 if (empty($projects)): ?>
                     <tr>
