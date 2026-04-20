@@ -19,12 +19,9 @@
 
         HtmlHelper::renderAlertErrorDiv();
         HtmlHelper::renderAlertSuccessDiv();
-        ?>
 
-        <div class="flex-between mb-20">
-            <div></div>
-            <button class="btn btn-primary" onclick="openModal()">+ New Project</button>
-        </div>
+        HtmlHelper::renderAddNewBtn("New project");
+        ?>
 
         <table>
             <thead>
@@ -41,24 +38,23 @@
 
                 $projects = QueryListHelper::queryList("Project");
 
-                if (empty($projects)): ?>
-                    <tr>
-                        <td colspan="4" class="text-center text-muted">
-                            No projects found. Create a new project to get started.
-                        </td>
-                    </tr>
-                <?php else: ?>
+                if (empty($projects)):
+                    HtmlHelper::renderEmpty("project");
 
-                    <?php foreach ($projects as $project): ?>
+                else:
+                    foreach ($projects as $project): ?>
+
                         <tr>
                             <td>
                                 <a href="<?= base_url("project/" . $project["project_code"]) ?>">
                                     <?= $project["title"] ?>
                                 </a>
                             </td>
+
                             <td>
-                                <span class="badge badge-info"><?= $project["status"] ?></span>
+                                <?= $project["status"] ?>
                             </td>
+
                             <td class="text-muted">
                                 <?= $project["start_date"] ?>
                             </td>

@@ -16,6 +16,27 @@ class HtmlHelper
         <?php
     }
 
+    public static function renderAddNewBtn(string $text)
+    {
+        ?>
+        <div class="flex-between mb-20">
+            <div></div>
+            <button class="btn btn-primary" onclick="openModal()">+ <?= $text ?></button>
+        </div>
+        <?php
+    }
+
+    public static function renderEmpty(string $itemName)
+    {
+        ?>
+        <tr>
+            <td colspan="3" class="text-center text-muted">
+                No <?= $itemName ?>s found. Create a new <?= $itemName ?> to get started.
+            </td>
+        </tr>
+        <?php
+    }
+
     public static function renderAlertErrorDiv() //Create error info dialogs
     {
         $errors = session()->getFlashdata('errors');

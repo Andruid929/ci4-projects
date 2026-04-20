@@ -14,19 +14,15 @@
         <?php
         use App\Core\Helpers\HtmlHelper;
         use App\Core\Helpers\JsScriptHelper;
-                                    use App\Core\Helpers\QueryListHelper;
-                                    use App\Modules\Tasks\Models\TaskModel;
+        use App\Core\Helpers\QueryListHelper;
 
         HtmlHelper::renderHeader('Tasks', 'Manage your tasks');
 
         HtmlHelper::renderAlertErrorDiv();
         HtmlHelper::renderAlertSuccessDiv();
-        ?>
 
-        <div class="flex-between mb-20">
-            <div></div>
-            <button class="btn btn-primary" onclick="openModal()">+ New Task</button>
-        </div>
+        HtmlHelper::renderAddNewBtn("New task");
+        ?>
 
         <table>
             <thead>
@@ -44,24 +40,23 @@
                 <?php
                 $tasks = QueryListHelper::queryList("Task");
 
-                if (empty($tasks)): ?>
-                    <tr>
-                        <td colspan="3" class="text-center text-muted">
-                            No tasks found. Create a new task to get started.
-                        </td>
-                    </tr>
-                <?php else: ?>
+                if (empty($tasks)):
+                    HtmlHelper::renderEmpty("task");
 
-                    <?php foreach ($tasks as $task): ?>
+                else:
+                    foreach ($tasks as $task): ?>
+
                         <tr>
                             <td>
                                 <a href="<?= base_url("task/" . $task["task_id"]) ?>">
                                     <?= $task["title"] ?>
                                 </a>
                             </td>
+
                             <td>
                                 <?= $task["priority"] ?>
                             </td>
+                            
                             <td>
                                 <?= $task["due_date"] ?>
                             </td>
