@@ -22,7 +22,7 @@ class CoreController extends BaseController
 
     protected function getViewName(): string
     {
-        return "landing";
+        return "home";
     }
 
     protected function redirectWithErrors(string $to, array $errors)

@@ -7,12 +7,12 @@ use App\Modules\Projects\Models\ProjectModel;
 use App\Modules\Tasks\Models\TaskModel;
 use App\Core\Helpers\FormOptionsHelper;
 
-class Task extends CoreController
+class TaskController extends CoreController
 {
 
     public function index()
     {
-        return view("tasks");
+        return view("App\Modules\Tasks\Views\\tasks");
     }
 
     public function openTask(int $taskId)
@@ -62,6 +62,8 @@ class Task extends CoreController
         $projectModel = new ProjectModel();
         $project = $projectModel->getByNum($taskProjectCode);
 
+        // TODO: This check should be moved to validation rules, but for now it is here to prevent creating tasks with invalid project codes
+
         if (!$project) {
             return parent::redirectWithErrors("tasks", ["Invalid project code: $taskProjectCode"]);
         }
@@ -82,7 +84,7 @@ class Task extends CoreController
 
     protected function getViewName(): string
     {
-        return "task";
+        return "App\Modules\Tasks\Views\\task";
     }
 
     protected function getValidationRules(): array

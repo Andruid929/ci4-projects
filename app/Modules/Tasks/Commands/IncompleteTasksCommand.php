@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Core\Commands;
+namespace App\Modules\Tasks\Commands;
 
+use App\Core\Common\Status;
 use App\Modules\Tasks\Models\TaskModel;
 use CodeIgniter\CLI\BaseCommand;
 use CodeIgniter\CLI\CLI;
 
-class IncompleteTasks extends BaseCommand
+class IncompleteTasksCommand extends BaseCommand
 {
 
     protected $group = 'Tasks';
@@ -18,7 +19,7 @@ class IncompleteTasks extends BaseCommand
         $taskModel = new TaskModel();
 
         $tasks = $taskModel
-            ->where('status !=', 'closed')
+            ->where("status !=", Status::COMPLETED)
             ->findAll();
 
         if (!$tasks) {
@@ -36,8 +37,8 @@ class IncompleteTasks extends BaseCommand
             CLI::write("Status: {$task['status']}", 'white');
             CLI::write("Due Date: {$task['due_date']}", 'white');
             CLI::newLine();
-
-            return EXIT_SUCCESS;
         }
+        
+        return EXIT_SUCCESS;
     }
 }

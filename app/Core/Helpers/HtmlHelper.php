@@ -2,6 +2,8 @@
 
 namespace App\Core\Helpers;
 
+use App\Core\Cells\ErrorMessageCell;
+
 class HtmlHelper
 {
     public static function renderHeader(string $title, string $info = '') //Create a header and description
@@ -45,9 +47,9 @@ class HtmlHelper
 
             <div class="error-div">
 
-                <?php foreach ($errors as $error): ?>
-                    <p class="per-error-message"> <?= $error ?> </p>
-                <?php endforeach; ?>
+                <?php foreach ($errors as $error): 
+                    view_cell(ErrorMessageCell::class, [$error]);
+                endforeach; ?>
 
             </div>
         <?php endif;

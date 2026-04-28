@@ -7,12 +7,12 @@ use App\Core\Controllers\CoreController;
 use App\Modules\Projects\Models\ProjectModel;
 use App\Core\Helpers\FormOptionsHelper;
 
-class Project extends CoreController
+class ProjectController extends CoreController
 {
 
     public function index()
     {
-        return view("projects");
+        return view("App\Modules\Projects\Views\projects");
     }
 
     public function openProject(int $projectCode)
@@ -64,7 +64,7 @@ class Project extends CoreController
 
     protected function getViewName(): string
     {
-        return "project";
+        return "App\Modules\Projects\Views\project";
     }
 
     protected function getValidationRules(): array
