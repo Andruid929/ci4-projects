@@ -46,8 +46,8 @@ class Auth extends ShieldAuth
      * --------------------------------------------------------------------
      */
     public array $views = [
-        'login'                       => '\CodeIgniter\Shield\Views\login',
-        'register'                    => '\CodeIgniter\Shield\Views\register',
+        'login'                       => '\App\Modules\Employees\Views\Auth\login',
+        'register'                    => '\App\Modules\Employees\Views\Auth\register',
         'layout'                      => '\CodeIgniter\Shield\Views\layout',
         'action_email_2fa'            => '\CodeIgniter\Shield\Views\email_2fa_show',
         'action_email_2fa_verify'     => '\CodeIgniter\Shield\Views\email_2fa_verify',
@@ -74,8 +74,8 @@ class Auth extends ShieldAuth
      * to apply any logic you may need.
      */
     public array $redirects = [
-        'register'          => '/',
-        'login'             => '/',
+        'register'          => 'dashboard',
+        'login'             => 'dashboard',
         'logout'            => 'login',
         'force_reset'       => '/',
         'permission_denied' => '/',
@@ -223,13 +223,13 @@ class Auth extends ShieldAuth
      * @var array<string, array<int, string>|string>
      */
     public array $usernameValidationRules = [
-        'label' => 'Auth.username',
-        'rules' => [
-            'required',
-            'max_length[30]',
-            'min_length[3]',
-            'regex_match[/\A[a-zA-Z0-9\.]+\z/]',
-        ],
+//        'label' => 'Auth.username',
+//        'rules' => [
+//            'required',
+//            'max_length[30]',
+//            'min_length[3]',
+//            'regex_match[/\A[a-zA-Z0-9\.]+\z/]',
+//        ],
     ];
 
     /**
@@ -245,7 +245,7 @@ class Auth extends ShieldAuth
         'label' => 'Auth.email',
         'rules' => [
             'required',
-            'max_length[254]',
+            'max_length[255]',
             'valid_email',
         ],
     ];
@@ -285,7 +285,6 @@ class Auth extends ShieldAuth
      */
     public array $validFields = [
         'email',
-        // 'username',
     ];
 
     /**
@@ -302,7 +301,7 @@ class Auth extends ShieldAuth
      * For example:
      *     $personalFields = ['firstname', 'lastname'];
      */
-    public array $personalFields = [];
+    public array $personalFields = ['first_name', 'last_name'];
 
     /**
      * --------------------------------------------------------------------
@@ -413,6 +412,7 @@ class Auth extends ShieldAuth
      */
     public array $tables = [
         'users'             => 'users',
+        'employees'         => 'employees',
         'identities'        => 'auth_identities',
         'logins'            => 'auth_logins',
         'token_logins'      => 'auth_token_logins',
