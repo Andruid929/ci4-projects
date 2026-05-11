@@ -87,7 +87,7 @@ $submitButtonClass = $submitButtonClass ?? 'btn btn-primary';
                         </option>
                         <option value="f" <?= $isEditing && $employee['gender'] === 'f' ? 'selected' : '' ?>>Female
                         </option>
-                        <option value="o" <?= $isEditing && $employee['gender'] === 'o' ? 'selected' : '' ?>>Other
+                        <option value="o" <?= $isEditing && $employee['gender'] === 'r' ? 'selected' : '' ?>>Rather not say 
                         </option>
                     </select>
                 </div>
