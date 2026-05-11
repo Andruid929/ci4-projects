@@ -3,6 +3,7 @@
 namespace App\Modules\Employees\Controllers;
 
 use App\Controllers\BaseController;
+use App\Modules\Employees\Helpers\EmployeeCodeHelper;
 use App\Modules\Employees\Services\EmployeeService;
 use CodeIgniter\HTTP\RedirectResponse;
 
@@ -58,6 +59,8 @@ class EmployeeController extends BaseController
         $result = $service->createEmployee($data);
 
         if ($result) {
+            $service->updateEmployeeCode($result);
+
             return $this->response->setJSON([
                 'success' => true,
                 'message' => 'Employee created successfully.',
@@ -152,12 +155,11 @@ class EmployeeController extends BaseController
             "first_name" => "required|min_length[3]|max_length[30]",
             "last_name" => "required|min_length[3]|max_length[30]",
             "email" => "required|valid_email|max_length[255]",
-            "phone_number" => "required|numeric|max_length[25]",
+            "phone_number" => "required|max_length[25]|regex_match[^\+?[1-9]\d{1,14}([ -]?\d+)*$]",
             "department" => "required|min_length[2]|max_length[20]",
             "job_title" => "required|min_length[2]|max_length[20]|string",
             "gender" => "required|in_list[m, f, r]",
             "employment_type" => "required|in_list[full-time,part-time,contract]",
-            "employee_code" => "required|alpha_numeric|max_length[32]",
             "status" => "required|in_list[active,inactive,terminated]",
             "date_joined" => "required|valid_date[Y-m-d\TH:i]",
             "probation_end_date" => "required|valid_date[Y-m-d\TH:i]"
@@ -184,8 +186,8 @@ class EmployeeController extends BaseController
             ],
             "phone_number" => [
                 "required" => "Phone number is required.",
-                "numeric" => "Phone number must contain only numbers.",
-                "max_length" => "Phone number cannot exceed 25 characters."
+                "max_length" => "Phone number cannot exceed 25 characters.",
+                "regex_match" => "Please provide a valid phone number."
             ],
             "department" => [
                 "required" => "Department is required.",
@@ -204,11 +206,6 @@ class EmployeeController extends BaseController
             "employment_type" => [
                 "required" => "Employment type is required.",
                 "in_list" => "Please select a valid employment type."
-            ],
-            "employee_code" => [
-                "required" => "Employee code is required.",
-                "alpha_numeric" => "Employee code must contain only letters and numbers.",
-                "max_length" => "Employee code cannot exceed 32 characters."
             ],
             "status" => [
                 "required" => "Status is required.",

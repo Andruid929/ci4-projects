@@ -66,7 +66,7 @@ class CreateEmployeeTable extends Migration
                 "null" => true
             ],
             "created_at" => [
-                "type" => "DATETIME"
+                "type" => "DATETIME",
             ],
             "updated_at" => [
                 "type" => "DATETIME",

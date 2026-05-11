@@ -15,6 +15,11 @@ class EmployeeModel extends Model
 
     protected $useSoftDeletes = true;
 
+    protected $useTimestamps = true;
+    protected $createdField = 'created_at';
+    protected $updatedField = 'updated_at';
+    protected $dateFormat = 'datetime';
+
     protected $allowedFields = [
         "employee_code",
         "first_name",

@@ -2,6 +2,7 @@
 
 namespace App\Modules\Employees\Services;
 
+use App\Modules\Employees\Helpers\EmployeeCodeHelper;
 use App\Modules\Employees\Models\EmployeeModel;
 
 class EmployeeService
@@ -47,8 +48,9 @@ class EmployeeService
         return $employee;
     }
 
-    public function createEmployee(array $data): bool|int|string
+    public function createEmployee(array $data): int
     {
+        
         return $this->employeeModel->insert($data);
     }
 
@@ -73,5 +75,10 @@ class EmployeeService
         $this->employeeModel->update($id, ['status' => 'terminated']);
 
         return $this->employeeModel->delete($id);
+    }
+
+    public function updateEmployeeCode(int $id): bool
+    {
+        return $this->employeeModel->update($id, ["employee_code" => EmployeeCodeHelper::generateEmployeeCode($id)]);
     }
 }

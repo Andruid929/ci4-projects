@@ -87,7 +87,7 @@ $submitButtonClass = $submitButtonClass ?? 'btn btn-primary';
                         </option>
                         <option value="f" <?= $isEditing && $employee['gender'] === 'f' ? 'selected' : '' ?>>Female
                         </option>
-                        <option value="o" <?= $isEditing && $employee['gender'] === 'r' ? 'selected' : '' ?>>Rather not say 
+                        <option value="r" <?= $isEditing && $employee['gender'] === 'r' ? 'selected' : '' ?>>Rather not say 
                         </option>
                     </select>
                 </div>
@@ -114,7 +114,7 @@ $submitButtonClass = $submitButtonClass ?? 'btn btn-primary';
                     <label class="form-label">Employee Code</label>
                     <input type="text" class="form-control" name="employee_code"
                            value="<?= $isEditing ? esc($employee['employee_code']) : '' ?>"
-                           placeholder="Auto-generated if blank" <?= $isEditing ? 'readonly' : '' ?>>
+                           placeholder="Auto-generated" readonly>
                 </div>
                 
                 <div class="col-md-6 mb-3">
