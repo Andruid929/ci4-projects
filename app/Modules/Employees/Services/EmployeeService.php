@@ -15,7 +15,7 @@ class EmployeeService
         $this->employeeModel = new EmployeeModel();
     }
 
-    public function getAllEmployees(): array
+    public function getEmployees(): array
     {
         $employees = $this->employeeModel->findAll();
 
@@ -50,7 +50,7 @@ class EmployeeService
 
     public function createEmployee(array $data): int
     {
-        
+
         return $this->employeeModel->insert($data);
     }
 
@@ -68,6 +68,11 @@ class EmployeeService
         }
 
         return null;
+    }
+
+    public function restoreEmployee(int $id): bool
+    {
+        return $this->employeeModel->update($id, ["deleted_at" => null] );
     }
 
     public function deleteEmployee(int $id): bool

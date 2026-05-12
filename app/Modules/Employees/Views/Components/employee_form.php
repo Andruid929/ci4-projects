@@ -87,7 +87,8 @@ $submitButtonClass = $submitButtonClass ?? 'btn btn-primary';
                         </option>
                         <option value="f" <?= $isEditing && $employee['gender'] === 'f' ? 'selected' : '' ?>>Female
                         </option>
-                        <option value="r" <?= $isEditing && $employee['gender'] === 'r' ? 'selected' : '' ?>>Rather not say 
+                        <option value="r" <?= $isEditing && $employee['gender'] === 'r' ? 'selected' : '' ?>>Rather not
+                            say
                         </option>
                     </select>
                 </div>
@@ -166,7 +167,6 @@ $submitButtonClass = $submitButtonClass ?? 'btn btn-primary';
     document.addEventListener('DOMContentLoaded', function () {
         const form = document.getElementById('employeeForm');
         const submitBtn = form.querySelector('button[type="submit"]');
-        const originalBtnContent = submitBtn.innerHTML;
 
         form.addEventListener('submit', function (e) {
             e.preventDefault();
@@ -176,39 +176,13 @@ $submitButtonClass = $submitButtonClass ?? 'btn btn-primary';
                 return;
             }
 
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...';
-
             const formData = new FormData(form);
             const action = form.getAttribute('action');
 
-            fetch(action, {
+            sendAjaxRequest(action, {
                 method: 'POST',
-                body: formData,
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        // You could use a toast library here if available
-                        alert(data.message);
-                        if (data.redirect) {
-                            window.location.href = data.redirect;
-                        }
-                    } else {
-                        alert(data.message || 'An error occurred.');
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = originalBtnContent;
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('An unexpected error occurred. Please try again.');
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnContent;
-                });
+                body: formData
+            }, submitBtn, 'Processing...');
         });
     });
 </script>

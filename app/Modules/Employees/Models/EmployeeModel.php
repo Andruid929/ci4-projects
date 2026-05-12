@@ -33,7 +33,8 @@ class EmployeeModel extends Model
         "status",
         "date_joined",
         "probation_end_date",
-        "last_updated"
+        "last_updated",
+        "deleted_at"
     ];
 
 }
