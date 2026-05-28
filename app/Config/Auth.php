@@ -13,18 +13,17 @@ declare(strict_types=1);
 
 namespace Config;
 
-use CodeIgniter\Shield\Config\Auth as ShieldAuth;
+use App\Models\EmployeeUserModel;
 use CodeIgniter\Shield\Authentication\Actions\ActionInterface;
 use CodeIgniter\Shield\Authentication\AuthenticatorInterface;
 use CodeIgniter\Shield\Authentication\Authenticators\AccessTokens;
 use CodeIgniter\Shield\Authentication\Authenticators\HmacSha256;
-use CodeIgniter\Shield\Authentication\Authenticators\JWT;
 use CodeIgniter\Shield\Authentication\Authenticators\Session;
 use CodeIgniter\Shield\Authentication\Passwords\CompositionValidator;
 use CodeIgniter\Shield\Authentication\Passwords\DictionaryValidator;
 use CodeIgniter\Shield\Authentication\Passwords\NothingPersonalValidator;
-use CodeIgniter\Shield\Authentication\Passwords\PwnedValidator;
 use CodeIgniter\Shield\Authentication\Passwords\ValidatorInterface;
+use CodeIgniter\Shield\Config\Auth as ShieldAuth;
 use CodeIgniter\Shield\Models\UserModel;
 
 class Auth extends ShieldAuth
@@ -46,8 +45,8 @@ class Auth extends ShieldAuth
      * --------------------------------------------------------------------
      */
     public array $views = [
-        'login'                       => '\CodeIgniter\Shield\Views\login',
-        'register'                    => '\CodeIgniter\Shield\Views\register',
+        'login'                       => '\App\Views\login',
+        'register'                    => '\App\Views\register',
         'layout'                      => '\CodeIgniter\Shield\Views\layout',
         'action_email_2fa'            => '\CodeIgniter\Shield\Views\email_2fa_show',
         'action_email_2fa_verify'     => '\CodeIgniter\Shield\Views\email_2fa_verify',
@@ -74,8 +73,8 @@ class Auth extends ShieldAuth
      * to apply any logic you may need.
      */
     public array $redirects = [
-        'register'          => '/',
-        'login'             => '/',
+        'register'          => 'dashboard',
+        'login'             => 'dashboard',
         'logout'            => 'login',
         'force_reset'       => '/',
         'permission_denied' => '/',
@@ -223,13 +222,13 @@ class Auth extends ShieldAuth
      * @var array<string, array<int, string>|string>
      */
     public array $usernameValidationRules = [
-        'label' => 'Auth.username',
-        'rules' => [
-            'required',
-            'max_length[30]',
-            'min_length[3]',
-            'regex_match[/\A[a-zA-Z0-9\.]+\z/]',
-        ],
+//        'label' => 'Auth.username',
+//        'rules' => [
+//            'required',
+//            'max_length[30]',
+//            'min_length[3]',
+//            'regex_match[/\A[a-zA-Z0-9\.]+\z/]',
+//        ],
     ];
 
     /**
@@ -413,6 +412,8 @@ class Auth extends ShieldAuth
      */
     public array $tables = [
         'users'             => 'users',
+        'leave_apps' => 'leave_apps',
+        'inter-reqs' => 'inter_reqs',
         'identities'        => 'auth_identities',
         'logins'            => 'auth_logins',
         'token_logins'      => 'auth_token_logins',
@@ -433,7 +434,7 @@ class Auth extends ShieldAuth
      *
      * @var class-string<UserModel>
      */
-    public string $userProvider = UserModel::class;
+    public string $userProvider = EmployeeUserModel::class;
 
     /**
      * Returns the URL that a user should be redirected
