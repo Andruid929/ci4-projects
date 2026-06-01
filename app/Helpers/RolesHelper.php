@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-class GroupsHelper
+class RolesHelper
 {
 
     public const ADMIN = "admin";

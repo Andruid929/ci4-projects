@@ -16,29 +16,49 @@ $this->section('content');
                     <div class="row justify-content-center">
                         <div class="col-lg-6">
                             <div class="p-5">
+                                
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                 </div>
 
-                                <?php if (session('error') !== null) : ?>
+                                <?php
+                                if (session('error') !== null) : ?>
                                     <div class="alert alert-danger" role="alert"><?= esc(session('error')) ?></div>
-                                <?php elseif (session('errors') !== null) : ?>
+                                
+                                <?php
+                                elseif (session('errors') !== null) : ?>
+                                
                                     <div class="alert alert-danger" role="alert">
-                                        <?php if (is_array(session('errors'))) : ?>
-                                            <?php foreach (session('errors') as $error) : ?>
+                                        
+                                        <?php
+                                        if (is_array(session('errors'))) : ?>
+                                        
+                                            <?php
+                                            foreach (session('errors') as $error) : ?>
                                                 <?= esc($error) ?>
                                                 <br>
-                                            <?php endforeach ?>
-                                        <?php else : ?>
+                                            
+                                            <?php
+                                            endforeach ?>
+                                        
+                                        <?php
+                                        else : ?>
                                             <?= esc(session('errors')) ?>
-                                        <?php endif ?>
+                                        
+                                        <?php
+                                        endif ?>
+                                        
                                     </div>
-                                <?php endif ?>
+                                <?php
+                                endif ?>
 
-                                <?php if (session('message') !== null) : ?>
+                                <?php
+                                if (session('message') !== null) : ?>
                                     <div class="alert alert-success" role="alert"><?= esc(session('message')) ?></div>
-                                <?php endif ?>
-
+                                
+                                <?php
+                                endif ?>
+                                
                                 <form class="user" action="<?= url_to('login') ?>" method="post">
                                     <?= csrf_field() ?>
 
@@ -57,25 +77,32 @@ $this->section('content');
                                                placeholder="Enter password" required>
                                     </div>
 
-                                    <?php if (setting('Auth.sessionConfig')['allowRemembering']): ?>
+                                    <?php
+                                    if (setting('Auth.sessionConfig')['allowRemembering']): ?>
+                                    
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" name="remember" class="custom-control-input" id="customCheck" <?php if (old('remember')): ?> checked<?php endif ?>>
                                                 <label class="custom-control-label" for="customCheck">Remember Me</label>
                                             </div>
                                         </div>
-                                    <?php endif; ?>
+                                    
+                                    <?php
+                                    endif; ?>
 
                                     <button type="submit" class="btn btn-primary btn-user btn-block">
                                         Login
                                     </button>
                                     <hr>
+                                    
                                     <div class="text-center">
                                         No account?
                                         <a class="small" href="<?= base_url('register') ?>">Register here!</a>
                                     </div>
+                                    
                                 </form>
                                 <hr>
+                                
                             </div>
                         </div>
                     </div>

@@ -6,7 +6,7 @@ use CodeIgniter\Database\Migration;
 
 class AddEmployeeIdColumnToUsersTable extends Migration
 {
-    public function up()
+    public function up(): void
     {
         $this->forge->addColumn("users",[
             "employee_id" => [
@@ -18,7 +18,7 @@ class AddEmployeeIdColumnToUsersTable extends Migration
         ]);
     }
 
-    public function down()
+    public function down(): void
     {
         $this->forge->dropColumn("users", "employee_id");
     }

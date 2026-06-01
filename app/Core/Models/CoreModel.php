@@ -12,6 +12,8 @@ class CoreModel extends Model
 
     protected $useTimestamps = true;
 
+    protected $primaryKey = "id";
+
     protected $updatedField = "updated_at";
     protected $createdField = "created_at";
     protected $deletedField = "deleted_at";
@@ -19,16 +21,12 @@ class CoreModel extends Model
     protected $allowedFields = [
         "employee_id",
         "status",
+        "approver_id",
         "approver_comment",
         "updated_at",
         "created_at",
         "deleted_at"
     ];
-
-    public function getAllRequests(): array|null
-    {
-        return $this->findAll();
-    }
 
     public function getManagedRequests(bool $pending = true): array|null
     {
@@ -41,7 +39,7 @@ class CoreModel extends Model
         return $this->where("approver_comment !=")->findAll();
     }
 
-    public function getRequestByEmployee(int $employeeId): array|null
+    public function getRequestByEmployee(string $employeeId): array|null
     {
         return $this->where("employee_id", $employeeId)->findAll();
     }
@@ -49,5 +47,15 @@ class CoreModel extends Model
     public function getRequestByStatus(string $status): array|null
     {
         return $this->where("status", $status)->findAll();
+    }
+
+    public function findIncludingDeleted(int $id)
+    {
+        return $this->withDeleted()->find($id);
+    }
+
+    public function getRequestsManagedBy(string $employee_id): array|null
+    {
+        return $this->where("approver_id", $employee_id)->findAll();
     }
 }

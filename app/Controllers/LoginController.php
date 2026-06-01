@@ -15,24 +15,23 @@ class LoginController extends ShieldLoginController
 
     public function loginAction(): RedirectResponse
     {
-        $loginInfo = [
+        $credentials = [
             "email" => $this->request->getPost("email"),
             "password" => $this->request->getPost("password")
         ];
 
-        if (! auth()->attempt($loginInfo)) {
+        $result = auth()->authenticate($credentials);
+
+        if (! $result->isOK()) {
+
             return redirect("login")
             ->withInput()
-            ->with("errors", $this->validator->getErrors());
+            ->with("error", $result->reason());
         }
 
-        if (auth()->user()->inGroup('admin')) {
-            return redirect("dashboard/admin");
-        } elseif (auth()->user()->inGroup('manager')) {
-            return redirect("dashboard/manager");
-        }
-        
-        return redirect("dashboard/user");
+        log_message("info", "");
+
+        return redirect("dashboard");
     }
 
 }

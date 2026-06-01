@@ -4,11 +4,14 @@
     <!-- Sidebar - Brand -->
     <?php
     $dashboardUrl = site_url('dashboard');
+    
     if (auth()->user()->inGroup('admin')) {
         $dashboardUrl = site_url('dashboard/admin');
+        
     } elseif (auth()->user()->inGroup('manager')) {
         $dashboardUrl = site_url('dashboard/manager');
     }
+    
     ?>
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= $dashboardUrl ?>">
         <div class="sidebar-brand-text mx-3">Employee manager</div>

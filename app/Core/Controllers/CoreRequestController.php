@@ -3,122 +3,292 @@
 namespace App\Core\Controllers;
 
 use App\Controllers\BaseController;
-use CodeIgniter\API\ResponseTrait;
-use App\Core\Helper\StatusHelper;
-use CodeIgniter\Model;
+use App\Core\Services\CoreService;
+use App\Helpers\RolesHelper;
+use CodeIgniter\HTTP\RequestInterface;
+use CodeIgniter\HTTP\ResponseInterface;
+use Psr\Log\LoggerInterface;
 
 abstract class CoreRequestController extends BaseController
 {
-    use ResponseTrait;
 
-    protected $model;
+    private CoreService $service;
 
-    /**
-     * Data mapping for create/update operations.
-     * Should be overridden in child classes if field names differ from POST names.
-     */
-    protected array $fieldMap = [];
-
-    public function create()
+    public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger): void
     {
-        $data = $this->getRequestData();
-        $data['employee_id'] = auth()->user()->employee_id;
-        $data['status']      = StatusHelper::PENDING;
-
-        if ($this->model->insert($data)) {
-            return $this->respondCreated(['message' => 'Request created successfully']);
-        }
-
-        return $this->fail($this->model->errors());
+        parent::initController($request, $response, $logger);
+        $this->service = $this->getService();
     }
 
-    public function view($id)
+    public function view(int $id): ResponseInterface
     {
-        $request = $this->model->find($id);
-        if (!$request) {
-            return $this->failNotFound('Request not found');
-        }
+        $data = $this->service->getRequestById($id);
 
-        return $this->respond($request);
+        if ($data) {
+            log_message('info', 'Request viewed: ' . $id . ' by user ' . auth()->user()->employee_id);
+
+            return $this->response->setJSON([
+                "success" => true,
+                "data" => $data
+            ])->setStatusCode(200);
+
+        } else {
+            log_message('error', 'Failed to view request: ' . $id . ' - Not found');
+
+            return $this->response->setJSON([
+                "success" => false,
+                "message" => "Request not found"
+            ])->setStatusCode(404);
+        }
     }
 
-    public function edit($id)
+    public function edit(int $id): ResponseInterface
     {
-        $request = $this->model->find($id);
-        if (!$request) {
-            return $this->failNotFound('Request not found');
+        if (!$this->service->getRequestById($id)) {
+            log_message('error', 'Failed to edit request: ' . $id . ' - Not found');
+
+            return $this->respondWithNotFound();
         }
 
-        $data = $this->getRequestData(false);
+        if (!$this->validateInfo()) {
+            log_message('error', 'Failed to edit request: ' . $id . ' - Validation errors');
 
-        if ($this->model->update($id, $data)) {
-            return $this->respond(['message' => 'Request updated successfully']);
+            return $this->respondWithValidationErrors();
         }
 
-        return $this->fail($this->model->errors());
+        $infoToUpdate = $this->request->getPost();
+
+        $result = $this->service->editRequest($id, $infoToUpdate);
+
+        if ($result) {
+            log_message('info', 'Request edited successfully: ' . $id . ' by user ' . auth()->user()->employee_id);
+
+            return $this->response->setJSON([
+                "success" => true,
+                "message" => "Request edited successfully"
+            ])->setStatusCode(200);
+
+        } else {
+            log_message('error', 'Failed to edit request: ' . $id);
+
+            return $this->response->setJSON([
+                "success" => false,
+                "message" => "Failed to edit request, try again"
+            ])->setStatusCode(500);
+        }
     }
 
-    public function delete($id)
+    public function handle(int $id): ResponseInterface
     {
-        if ($this->model->delete($id)) {
-            return $this->respondDeleted(['message' => 'Request deleted successfully']);
+        if (!$this->service->getRequestById($id)) {
+            log_message('error', 'Failed to handle request: ' . $id . ' - Not found');
+
+            return $this->respondWithNotFound();
         }
 
-        return $this->fail('Failed to delete request');
-    }
-
-    public function approve($id)
-    {
-        $data = [
-            'status'           => StatusHelper::APPROVED,
-            'approver_comment' => $this->request->getPost('approver_comment'),
+        $rules = [
+            "status" => "required|in_list[approved,denied]",
+            "approver_comment" => "required"
+        ];
+        $messages = [
+            "status" => "Status is required",
+            "approver_comment" => "Comment is required"
         ];
 
-        if ($this->model->update($id, $data)) {
-            return $this->respond(['message' => 'Request approved']);
+        if (!$this->validate($rules, $messages)) {
+            log_message('error', 'Failed to handle request: ' . $id . ' - Validation errors');
+
+            return $this->respondWithValidationErrors();
         }
 
-        return $this->fail($this->model->errors());
-    }
+        $status = $this->request->getPost('status');
+        $comment = $this->request->getPost('approver_comment');
 
-    public function deny($id)
-    {
-        $data = [
-            'status'           => StatusHelper::DENIED,
-            'approver_comment' => $this->request->getPost('approver_comment'),
-        ];
+        if (!in_array($status, ['approved', 'denied'])) {
+            log_message('error', 'Failed to handle request: ' . $id . ' - Invalid status: ' . $status);
 
-        if ($this->model->update($id, $data)) {
-            return $this->respond(['message' => 'Request denied']);
+            return $this->response->setJSON([
+                "success" => false,
+                "message" => "Invalid status"
+            ])->setStatusCode(400);
         }
 
-        return $this->fail($this->model->errors());
+        $result = $this->service->updateRequestStatus($id, $status, $comment);
+
+        if ($result) {
+            log_message('info', 'Request ' . $status . ' successfully: ' . $id . ' by user ' . auth()->user()->employee_id);
+
+            return $this->response->setJSON([
+                "success" => true,
+                "message" => "Request has been " . $status
+            ])->setStatusCode(200);
+        }
+
+        log_message('error', 'Failed to update request status: ' . $id);
+
+        return $this->response->setJSON([
+            "success" => false,
+            "message" => "Failed to update request status"
+        ])->setStatusCode(500);
     }
 
-    /**
-     * Extracts data from request based on fieldMap or allowedFields
-     */
-    protected function getRequestData(bool $isCreate = true): array
+    public function create(): ResponseInterface
     {
-        $data = [];
-        $fields = !empty($this->fieldMap) ? $this->fieldMap : $this->model->allowedFields;
+        if (!$this->validateInfo()) {
+            log_message('error', 'Failed to create request - Validation errors');
+            return $this->respondWithValidationErrors();
+        }
 
-        foreach ($fields as $dbField => $postField) {
-            if (is_numeric($dbField)) {
-                $dbField = $postField;
+        $infoToInsert = $this->request->getPost();
+        $infoToInsert['employee_id'] = auth()->user()->employee_id;
+        $infoToInsert['status'] = 'pending';
+
+        $result = $this->service->createRequest($infoToInsert);
+
+        if ($result) {
+            log_message('info', 'Request created successfully by user ' . auth()->user()->employee_id);
+            return $this->response->setJSON([
+                "success" => true,
+                "message" => "Request created successfully"
+            ])->setStatusCode(201);
+
+        } else {
+            log_message('error', 'Failed to create request by user ' . auth()->user()->employee_id . ' - Database error');
+            return $this->response->setJSON([
+                "success" => false,
+                "message" => "Failed to create request, try again"
+            ])->setStatusCode(500);
+        }
+    }
+
+    public function delete(int $id): ResponseInterface
+    {
+        $request = $this->service->getRequestById($id);
+        if (!$request) {
+            log_message('error', 'Failed to delete request: ' . $id . ' - Not found');
+
+            return $this->respondWithNotFound();
+        }
+
+        $user = auth()->user();
+
+        if (!$user->inGroup(RolesHelper::ADMIN)) { //These checks don't apply to admins
+
+            if ($request['employee_id'] !== $user->employee_id) {
+                log_message('error', 'Failed to delete request: ' . $id . ' - Unauthorized access by user ' . $user->employee_id);
+
+                return $this->response->setJSON([
+                    "success" => false,
+                    "message" => "You are not authorized to delete this request"
+                ])->setStatusCode(403);
             }
+
+            if ($request['status'] !== 'pending') {
+                log_message('error', 'Failed to delete request: ' . $id . ' - Request not in pending status');
+
+                return $this->response->setJSON([
+                    "success" => false,
+                    "message" => "Only pending requests can be deleted"
+                ])->setStatusCode(400);
+            }
+
+        }
+        $result = $this->service->deleteRequest($id);
+
+        if ($result) {
+            log_message('info', 'Request deleted successfully: ' . $id . ' by user ' . $user->employee_id);
+
+            return $this->response->setJSON([
+                "success" => true,
+                "message" => "Request deleted successfully"
+            ])->setStatusCode(200);
+
+        } else {
+            log_message('error', 'Failed to delete request: ' . $id . ' - Database error');
+
+            return $this->response->setJSON([
+                "success" => false,
+                "message" => "Failed to delete request, try again"
+            ])->setStatusCode(500);
+        }
+    }
+
+    public function restore(int $id): ResponseInterface
+    {
+        $user = auth()->user();
+
+        if (!$user->inGroup(RolesHelper::ADMIN)) {
+            log_message('error', 'Failed to restore request: ' . $id . ' - Unauthorized access by user ' . $user->employee_id);
+
+            return $this->response->setJSON([
+                "success" => false,
+                "message" => "You are not authorized to restore requests"
+            ])->setStatusCode(403);
+        }
+
+        $request = $this->service->getRequestByIdIncludingDeleted($id);
+
+        if (!$request) {
+            log_message('error', 'Failed to restore request: ' . $id . ' - Not found');
+
+            return $this->respondWithNotFound();
+        }
+
+        if (!isset($request['deleted_at']) || $request['deleted_at'] === null) {
+            log_message('error', 'Failed to restore request: ' . $id . ' - Request is not deleted');
+
+            return $this->response->setJSON([
+                "success" => false,
+                "message" => "This request is not deleted and cannot be restored"
+            ])->setStatusCode(400);
+        }
+
+        $result = $this->service->restoreRequest($id);
+
+        if ($result) {
+            log_message('info', 'Request restored successfully: ' . $id . ' by user ' . $user->employee_id);
+
+            return $this->response->setJSON([
+                "success" => true,
+                "message" => "Request restored successfully"
+            ])->setStatusCode(200);
             
-            // Skip system fields that shouldn't be filled from POST directly
-            if (in_array($dbField, ['employee_id', 'status', 'approver_comment', 'updated_at', 'created_at', 'deleted_at'])) {
-                continue;
-            }
+        } else {
+            log_message('error', 'Failed to restore request: ' . $id . ' - Database error');
 
-            $val = $this->request->getPost($postField);
-            if ($val !== null) {
-                $data[$dbField] = $val;
-            }
+            return $this->response->setJSON([
+                "success" => false,
+                "message" => "Failed to restore request, try again"
+            ])->setStatusCode(500);
         }
-
-        return $data;
     }
+
+    protected function respondWithValidationErrors(): ResponseInterface
+    {
+        log_message('error', 'Validation failed: ' . implode(", ", $this->validator->getErrors()) . ' for user ' . auth()->user()->employee_id);
+
+        return $this->response->setJSON([
+            "success" => false,
+            "message" => implode(", ", $this->validator->getErrors())
+        ])->setStatusCode(400);
+    }
+
+    protected function respondWithNotFound(): ResponseInterface
+    {
+        return $this->response->setJSON([
+            "success" => false,
+            "message" => "Request not found"
+        ])->setStatusCode(404);
+    }
+
+    protected final function validateInfo(): bool
+    {
+        return $this->validate($this->validationRules(), $this->validationErrorMessages());
+    }
+
+    protected abstract function validationRules(): array;
+
+    protected abstract function validationErrorMessages(): array;
+
+    protected abstract function getService(): CoreService;
 }

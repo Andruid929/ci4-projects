@@ -2,7 +2,7 @@
 
 namespace App\Filters;
 
-use App\Helpers\GroupsHelper;
+use App\Helpers\RolesHelper;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\RequestInterface;
@@ -16,21 +16,29 @@ class RolesFilter implements FilterInterface
         $user = auth()->user();
 
         $path = $request->getUri()->getPath();
+        $path = '/' . ltrim($path, '/');
 
-        if ($user->inGroup(GroupsHelper::ADMIN) && $path !== "/dashboard/admin") {
-            return redirect("dashboard/admin");
-
-        } elseif ($user->inGroup(GroupsHelper::MANAGER) && $path !== "/dashboard/manager"){
-            return redirect(GroupsHelper::MANAGER);
-
-        } else {
-            if ($path !== "/dashboard") {
-                return redirect("dashboard");
+        if ($user->inGroup(RolesHelper::ADMIN)) {
+            if ($path !== "/dashboard/admin") {
+                return redirect()->to("dashboard/admin");
             }
 
             return null;
         }
 
+        if ($user->inGroup(RolesHelper::MANAGER)) {
+            if ($path !== "/dashboard/manager") {
+                return redirect()->to("dashboard/manager");
+            }
+
+            return null;
+        }
+
+        if ($path !== "/dashboard") {
+            return redirect()->to("dashboard");
+        }
+
+        return null;
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)

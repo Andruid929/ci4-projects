@@ -38,6 +38,8 @@ class Autoload extends AutoloadConfig
      * @var array<string, list<string>|string>
      */
     public $psr4 = [
+        'App\Modules\LeaveRequests' => APPPATH . 'Modules/LeaveRequests',
+        'App\Modules\InternalRequests' => APPPATH . 'Modules/InternalRequests',
         APP_NAMESPACE => APPPATH,
     ];
 

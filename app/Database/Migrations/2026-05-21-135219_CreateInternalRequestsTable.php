@@ -6,7 +6,7 @@ use CodeIgniter\Database\Migration;
 
 class CreateInternalRequestsTable extends Migration
 {
-    public function up()
+    public function up(): void
     {
         $this->forge->addField([
             "id" => [
@@ -49,7 +49,7 @@ class CreateInternalRequestsTable extends Migration
         $this->forge->createTable("inter_reqs");
     }
 
-    public function down()
+    public function down(): void
     {
         $this->forge->dropTable("inter_reqs");
     }

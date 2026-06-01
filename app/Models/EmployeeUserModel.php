@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use CodeIgniter\Shield\Entities\User;
 use CodeIgniter\Shield\Models\UserModel;
 
 class EmployeeUserModel extends UserModel
@@ -18,5 +19,16 @@ class EmployeeUserModel extends UserModel
             "first_name",
             "last_name"
         ];
+    }
+
+    public function getUserByEmployeeId(string $employeeId): User|null
+    {
+        $record = $this->where('employee_id', $employeeId)->first();
+
+        if ($record) {
+            return $record;
+        }
+
+        return null;
     }
 }

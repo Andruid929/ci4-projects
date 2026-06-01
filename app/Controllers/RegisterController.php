@@ -2,8 +2,9 @@
 
 namespace App\Controllers;
 
-use App\Helpers\GroupsHelper;
-use App\Helpers\EmployeeCodeHelper;
+use App\Helpers\RolesHelper;
+use App\Helpers\EmployeeIdHelper;
+use App\Helpers\ValidationHelper;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\Shield\Controllers\RegisterController as ShieldRegisterController;
 use CodeIgniter\Shield\Entities\User;
@@ -18,23 +19,32 @@ class RegisterController extends ShieldRegisterController
 
     public function registerAction(): RedirectResponse
     {
+        if (! $this->validate(ValidationHelper::userValidationRules(), ValidationHelper::userValidationErrorMessages())) {
+            return redirect("register")
+                ->withInput()
+                ->with("errors", $this->validator->getErrors());
+        }
+
         $users = auth()->getProvider();
 
-        $employeeCode = EmployeeCodeHelper::generateEmployeeCode();
-
-        log_message("error", "Generated employee code: " . $employeeCode);
+        $employeeId = EmployeeIdHelper::generateEmployeeId();
 
         $user = new User([
-            "username" => $employeeCode,
+            "username" => null,
+            "employee_id" => $employeeId,
+            "name" => "User registration",
             "email" => $this->request->getPost("email"),
             "password" => $this->request->getPost("password"),
+            "first_name" => $this->request->getPost("first_name"),
+            "last_name" => $this->request->getPost("last_name")
         ]);
-
-        $user->addGroup(GroupsHelper::USER);
 
         try {
             $users->save($user);
 
+            $user = $users->findById($users->getInsertID());
+
+            $users->addToDefaultGroup($user);
         } catch (\Throwable $e) {
             log_message("error", "Error creating user: " . $e->getMessage());
 
@@ -45,7 +55,7 @@ class RegisterController extends ShieldRegisterController
 
         return redirect("login")
             ->withInput()
-            ->with("success", "Account created successfully, use your credentials to login");
+            ->with("message", "Account created successfully, use your credentials to login");
     }
 
 }

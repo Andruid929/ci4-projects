@@ -10,7 +10,6 @@ class ValidationHelper
         return [
             "first_name" => "required|max_length[50]|min_length[2]|regex_match[/^[a-zA-Z\s\-\']+$/]",
             "last_name" => "required|max_length[50]|min_length[2]|regex_match[/^[a-zA-Z\s\-\']+$/]",
-            "username" => "max_length[255]",
             "email" => "required|max_length[255]|valid_email",
             "password" => "required|min_length[8]|max_length[255]",
             "password_confirm" => "required|matches[password]"

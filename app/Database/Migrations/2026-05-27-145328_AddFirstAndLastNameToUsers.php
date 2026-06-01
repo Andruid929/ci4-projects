@@ -12,12 +12,14 @@ class AddFirstAndLastNameToUsers extends Migration
             "first_name" => [
                 "type" => "VARCHAR",
                 "constraint" => 255,
-                "null" => true
+                "null" => true,
+                "after" => "employee_id"
             ],
             "last_name" => [
                 "type" => "VARCHAR",
                 "constraint" => 255,
-                "null" => true
+                "null" => true,
+                "after" => "first_name"
             ]
         ]);
     }

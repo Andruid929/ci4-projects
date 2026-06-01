@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\InternalRequest\Models;
+namespace App\Modules\InternalRequests\Models;
 
 use App\Core\Models\CoreModel;
 

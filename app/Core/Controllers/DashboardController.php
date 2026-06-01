@@ -3,29 +3,51 @@
 namespace App\Core\Controllers;
 
 use App\Controllers\BaseController;
-use App\Helpers\GroupsHelper;
-use App\Modules\InternalRequest\Models\InternalRequestModel;
+use App\Helpers\RolesHelper;
+use App\Modules\InternalRequests\Models\InternalRequestModel;
+use App\Modules\InternalRequests\Services\InternalRequestsService;
 use App\Modules\LeaveRequests\Models\LeaveRequestsModel;
+use App\Modules\LeaveRequests\Services\LeaveRequestsService;
 
 class DashboardController extends BaseController
 {
 
-    public function showDashboard(string $group = "user"): string
+    public function admin(): string
+    {
+        return $this->showDashboard(RolesHelper::ADMIN);
+    }
+
+    public function manager(): string
+    {
+        return $this->showDashboard(RolesHelper::MANAGER);
+    }
+
+    public function index(): string
+    {
+        return $this->showDashboard();
+    }
+
+    private function showDashboard(string $group = "user"): string
     {
         $user = auth()->user();
-        $internalRequestModel = new InternalRequestModel();
-        $leaveRequestModel = new LeaveRequestsModel();
 
-        if ($group === GroupsHelper::ADMIN || $group === GroupsHelper::MANAGER) {
-            $internalRequests = $internalRequestModel->findAll();
+        $interReqsService = new InternalRequestsService();
+        $leaveRequestService = new LeaveRequestsService();
 
-            $leaveRequests = $leaveRequestModel->findAll();
+        $isDeleted = $this->request->getGet("");
+
+        if ($group === RolesHelper::ADMIN || $group === RolesHelper::MANAGER) {
+
+            $internalRequests = $interReqsService->getAllRequests();
+
+            $leaveRequests = $leaveRequestService->getAllRequests();
         } else {
             $employeeId = $user->employee_id ?? null;
 
             if ($employeeId) {
-                $internalRequests = $internalRequestModel->where('employee_id', $employeeId)->findAll();
-                $leaveRequests = $leaveRequestModel->where('employee_id', $employeeId)->findAll();
+                $internalRequests = $interReqsService->getEmployeeRequests($employeeId);
+                $leaveRequests = $leaveRequestService->getEmployeeRequests($employeeId);
+
             } else {
                 $internalRequests = [];
                 $leaveRequests = [];
