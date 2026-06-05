@@ -3,6 +3,7 @@
 namespace Config;
 
 use App\Filters\RolesFilter;
+use App\Filters\SummaryFilter;
 use CodeIgniter\Config\Filters as BaseFilters;
 use CodeIgniter\Filters\Cors;
 use CodeIgniter\Filters\CSRF;
@@ -35,7 +36,8 @@ class Filters extends BaseFilters
         'forcehttps' => ForceHTTPS::class,
         'pagecache' => PageCache::class,
         'performance' => PerformanceMetrics::class,
-        'roles' => RolesFilter::class
+        'roles' => RolesFilter::class,
+        'summary' => SummaryFilter::class
     ];
 
     /**

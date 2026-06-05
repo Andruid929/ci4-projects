@@ -4,9 +4,7 @@ namespace App\Core\Controllers;
 
 use App\Controllers\BaseController;
 use App\Helpers\RolesHelper;
-use App\Modules\InternalRequests\Models\InternalRequestModel;
 use App\Modules\InternalRequests\Services\InternalRequestsService;
-use App\Modules\LeaveRequests\Models\LeaveRequestsModel;
 use App\Modules\LeaveRequests\Services\LeaveRequestsService;
 
 class DashboardController extends BaseController
@@ -34,14 +32,28 @@ class DashboardController extends BaseController
         $interReqsService = new InternalRequestsService();
         $leaveRequestService = new LeaveRequestsService();
 
-        $isDeleted = $this->request->getGet("");
+        $deletedParam = $this->request->getGet("page");
+
+        $viewDeleted = $deletedParam === "deleted";
 
         if ($group === RolesHelper::ADMIN || $group === RolesHelper::MANAGER) {
 
-            $internalRequests = $interReqsService->getAllRequests();
+            if ($viewDeleted) {
+                $internalRequests = $interReqsService->getDeletedRequests();
 
-            $leaveRequests = $leaveRequestService->getAllRequests();
+                $leaveRequests = $leaveRequestService->getDeletedRequests();
+
+            } else {
+                $internalRequests = $interReqsService->getAllRequests();
+
+                $leaveRequests = $leaveRequestService->getAllRequests();
+            }
         } else {
+
+            if ($viewDeleted) {
+                redirect("dashboard");
+            }
+
             $employeeId = $user->employee_id ?? null;
 
             if ($employeeId) {
@@ -55,9 +67,10 @@ class DashboardController extends BaseController
         }
 
         return view('dashboard', [
-            'internalRequests' => $internalRequests,
-            'leaveRequests'    => $leaveRequests,
-            'user'             => $user
+            "internalRequests" => $internalRequests,
+            "leaveRequests" => $leaveRequests,
+            "user" => $user,
+            "viewDeleted" => $viewDeleted
         ]);
     }
 }

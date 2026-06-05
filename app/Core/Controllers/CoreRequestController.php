@@ -136,17 +136,21 @@ abstract class CoreRequestController extends BaseController
     {
         if (!$this->validateInfo()) {
             log_message('error', 'Failed to create request - Validation errors');
+
             return $this->respondWithValidationErrors();
         }
 
+        $currentEmployeeId = auth()->user()->employee_id;
+
         $infoToInsert = $this->request->getPost();
-        $infoToInsert['employee_id'] = auth()->user()->employee_id;
+        $infoToInsert['employee_id'] = $currentEmployeeId;
         $infoToInsert['status'] = 'pending';
 
         $result = $this->service->createRequest($infoToInsert);
 
         if ($result) {
-            log_message('info', 'Request created successfully by user ' . auth()->user()->employee_id);
+            log_message('info', 'Request created successfully by user ' . $currentEmployeeId);
+
             return $this->response->setJSON([
                 "success" => true,
                 "message" => "Request created successfully"
@@ -154,6 +158,7 @@ abstract class CoreRequestController extends BaseController
 
         } else {
             log_message('error', 'Failed to create request by user ' . auth()->user()->employee_id . ' - Database error');
+
             return $this->response->setJSON([
                 "success" => false,
                 "message" => "Failed to create request, try again"
@@ -234,7 +239,7 @@ abstract class CoreRequestController extends BaseController
             return $this->respondWithNotFound();
         }
 
-        if (!isset($request['deleted_at']) || $request['deleted_at'] === null) {
+        if (!isset($request['deleted_at'])) {
             log_message('error', 'Failed to restore request: ' . $id . ' - Request is not deleted');
 
             return $this->response->setJSON([

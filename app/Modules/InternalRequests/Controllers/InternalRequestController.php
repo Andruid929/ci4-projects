@@ -32,6 +32,6 @@ class InternalRequestController extends CoreRequestController
 
     protected function getService(): CoreService
     {
-        return service("internalRequestsService");
+        return new InternalRequestsService();
     }
 }

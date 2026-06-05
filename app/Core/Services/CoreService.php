@@ -60,8 +60,13 @@ class CoreService
 
             return $this->coreModel->where("status", StatusHelper::APPROVED)->findAll();
         }
-        
+
         return $this->coreModel->where("status", StatusHelper::DENIED)->findAll();
+    }
+
+    public function getDeletedRequests(): array|null
+    {
+        return $this->coreModel->onlyDeleted()->findAll();
     }
 
     public function getEmployeeRequests(string $employeeId): array|null
@@ -84,7 +89,7 @@ class CoreService
     {
         return $this->coreModel->delete($id);
     }
-    
+
     public function restoreRequest(int $id): bool
     {
         return $this->coreModel->restore($id);

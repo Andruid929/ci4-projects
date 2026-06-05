@@ -119,6 +119,7 @@ use App\Helpers\PageNameHelper;
     <script src="<?= site_url('vendor/datatables/dataTables.bootstrap4.min.js') ?>"></script>
     <script src="<?= site_url('js/sb-admin-2.min.js') ?>"></script>
     <script src="<?= site_url('js/datatable-init.js') ?>"></script>
+    <script src="<?= site_url('js/summary-init.js') ?>"></script>
     
 </body>
 </html>

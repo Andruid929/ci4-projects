@@ -23,4 +23,9 @@ $routes->group("dashboard", ["filter" => ["session", "roles"]], function ($route
     $routes->get("admin", "\App\Core\Controllers\DashboardController::admin");
 });
 
+$routes->group("summary", ["filter" => ["session", "summary"]], function ($routes) {
+    $routes->get("/", "SummaryController::index");
+    $routes->get("data", "SummaryController::data");
+});
+
 $routes->post("logout", "LoginController::logoutAction", ["filter" => "session"]);

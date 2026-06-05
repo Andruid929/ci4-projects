@@ -1,11 +1,16 @@
 <?php
 use App\Helpers\RolesHelper;
+
+/**
+ * @var array $request
+ * @var bool $viewDeleted
+ */
 ?>
 <div class="btn-group" role="group">
     <button title="View" class="btn btn-sm btn-info btn-view-generic" data-id="<?= $request['id'] ?>" data-target="#<?= $viewModalId ?>"><i class="fas fa-eye"></i></button>
     
     <?php
-    if ($user->inGroup(RolesHelper::ADMIN)): ?>
+    if ($user->inGroup(RolesHelper::ADMIN) && $viewDeleted): ?>
         <button title="Restore" class="btn btn-sm btn-warning btn-restore-generic" data-id="<?= $request['id'] ?>"><i class="fas fa-undo"></i></button>
     
     <?php

@@ -1,7 +1,9 @@
 <?php
-/** @var array $internalRequests */
-
-/** @var array $leaveRequests */
+/**
+ * @var array $internalRequests
+ * @var array $leaveRequests
+ * @var bool $viewDeleted
+ */
 
 use App\Helpers\RequestHelper;
 use App\Helpers\RolesHelper;
@@ -39,7 +41,7 @@ $this->extend("layouts/main");
                             <div class="col-auto">
                                 <i class="fas fa-file-alt fa-2x text-gray-300"></i>
                             </div>
-                            
+                        
                         </div>
                     </div>
                 </div>
@@ -60,7 +62,7 @@ $this->extend("layouts/main");
                             <div class="col-auto">
                                 <i class="fas fa-calendar fa-2x text-gray-300"></i>
                             </div>
-                            
+                        
                         </div>
                     </div>
                 </div>
@@ -74,53 +76,54 @@ $this->extend("layouts/main");
             <div class="col-lg-12 mb-4" data-module="InternalRequest" data-route="internal-requests">
                 
                 <?= view('components/request_table', [
-                    'requests' => $internalRequests,
-                    'title' => 'Internal Requests',
-                    'buttonText' => 'New Internal Request',
-                    'tableId' => 'dataTableInternal',
-                    'createModalId' => 'createRequestModal',
-                    'columns' => [
-                        'Type' => 'request_type',
-                        'Subject' => 'subject',
-                    ],
-                    'actionModals' => [
-                        'view' => 'viewRequestModal',
-                        'edit' => 'editRequestModal',
-                        'approve' => 'approveRequestModal'
-                    ]
+                        'requests' => $internalRequests,
+                        'title' => 'Internal Requests',
+                        'buttonText' => 'New Internal Request',
+                        'tableId' => 'dataTableInternal',
+                        'createModalId' => 'createRequestModal',
+                        'columns' => [
+                                'Type' => 'request_type',
+                                'Subject' => 'subject',
+                        ],
+                        'actionModals' => [
+                                'view' => 'viewRequestModal',
+                                'edit' => 'editRequestModal',
+                                'approve' => 'approveRequestModal'
+                        ]
                 ]) ?>
-                
+            
             </div>
             
             <!-- Leave Requests Table -->
             <div class="col-lg-12 mb-4" data-module="LeaveRequests" data-route="leave-requests">
                 
                 <?= view('components/request_table', [
-                    'requests' => $leaveRequests,
-                    'title' => 'Leave Requests',
-                    'buttonText' => 'New Leave Request',
-                    'tableId' => 'dataTableLeave',
-                    'createModalId' => 'createLeaveModal',
-                    'columns' => [
-                        'Type' => 'leave_type',
-                        'Start date' => 'start_date',
-                        'End date' => 'end_date',
-                    ],
-                    'actionModals' => [
-                        'view' => 'viewLeaveModal',
-                        'edit' => 'editLeaveModal',
-                        'approve' => 'approveLeaveModal'
-                    ]
+                        'requests' => $leaveRequests,
+                        'title' => 'Leave Requests',
+                        'buttonText' => 'New Leave Request',
+                        'tableId' => 'dataTableLeave',
+                        'createModalId' => 'createLeaveModal',
+                        'viewDeleted' => $viewDeleted,
+                        'columns' => [
+                                'Type' => 'leave_type',
+                                'Start date' => 'start_date',
+                                'End date' => 'end_date',
+                        ],
+                        'actionModals' => [
+                                'view' => 'viewLeaveModal',
+                                'edit' => 'editLeaveModal',
+                                'approve' => 'approveLeaveModal'
+                        ]
                 ]) ?>
-                
+            
             </div>
         
         </div>
     
     </div>
     <!-- /.container-fluid -->
-
-<!-- Internal request modals -->
+    
+    <!-- Internal request modals -->
 <?= view('components/modals/create', [
         'modalId' => 'createRequestModal',
         'title' => 'New Internal Request',
@@ -146,8 +149,8 @@ $this->extend("layouts/main");
         'module' => 'InternalRequest',
         'route' => 'internal-requests'
 ]) ?>
-
-<!-- Leave request modals -->
+    
+    <!-- Leave request modals -->
 <?= view('components/modals/create', [
         'modalId' => 'createLeaveModal',
         'title' => 'New Leave Request',

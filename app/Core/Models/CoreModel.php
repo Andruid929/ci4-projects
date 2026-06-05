@@ -36,6 +36,7 @@ class CoreModel extends Model
                 ->findAll();
         }
 
+
         return $this->where("approver_comment !=")->findAll();
     }
 

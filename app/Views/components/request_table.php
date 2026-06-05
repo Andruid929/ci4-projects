@@ -7,6 +7,7 @@
  * @var string $buttonText
  * @var string $createModalId
  * @var array $actionModals
+ * @var bool $viewDeleted
  */
 
 use App\Helpers\RolesHelper;
@@ -104,6 +105,7 @@ $user = auth()->user();
                                 <?= view('components/request_actions', [
                                         'request' => $request,
                                         'user' => $user,
+                                        'viewDeleted' => $viewDeleted,
                                         'viewModalId' => $actionModals['view'],
                                         'editModalId' => $actionModals['edit'],
                                         'approveModalId' => $actionModals['approve']
