@@ -65,6 +65,7 @@ writable/debugbar/*
 
 php_errors.log
 
+logs/
 #-------------------------
 # User Guide Temp Files
 #-------------------------
@@ -127,4 +128,9 @@ _modules/*
 
 vendor/
 
+<<<<<<< HEAD
 *.sql
+=======
+*.swp
+*.un~
+>>>>>>> 39d90d5 (Initial commit)
