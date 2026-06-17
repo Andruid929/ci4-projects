@@ -13,4 +13,5 @@ class InternalRequestsService extends CoreService
     {
         return model(InternalRequestModel::class);
     }
+
 }

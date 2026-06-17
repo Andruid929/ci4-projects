@@ -4,9 +4,14 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateSuperRequestsSuperTable extends Migration
+class RemoveLeaveRequestsTable extends Migration
 {
     public function up()
+    {
+        $this->forge->dropTable("leave_apps");
+    }
+
+    public function down()
     {
         $this->forge->addField([
             "id" => [
@@ -17,9 +22,9 @@ class CreateSuperRequestsSuperTable extends Migration
                 "type" => "VARCHAR",
                 "constraint" => 10
             ],
-            "request_type" => [
-                "type" => "VARCHAR",
-                "constraint" => 40
+            "leave_type" => [
+                "type" => "ENUM",
+                "constraint" => ["sick", "vacation", "personal", "bereavement", "maternity", "unpaid"]
             ],
             "start_date" => [
                 "type" => "DATETIME"
@@ -27,15 +32,24 @@ class CreateSuperRequestsSuperTable extends Migration
             "end_date" => [
                 "type" => "DATETIME"
             ],
-            "is_leave" => [
-                "type" => "BOOLEAN"
-            ],
             "reason" => [
                 "type" => "TEXT",
+                "null" => false
             ],
             "status" => [
                 "type" => "ENUM",
                 "constraint" => ["approved", "pending", "denied"]
+            ],
+            "request_type" => [
+                "type" => "ENUM",
+                "constraint" => ["career_advancement", "compensation", "operational", "administrative"]
+            ],
+            "subject" => [
+                "type" => "VARCHAR",
+                "constraint" => 30
+            ],
+            "description" => [
+                "type" => "TEXT"
             ],
             "approver_comment" => [
                 "type" => "TEXT"
@@ -52,11 +66,6 @@ class CreateSuperRequestsSuperTable extends Migration
         ]);
 
         $this->forge->addPrimaryKey("id");
-        $this->forge->createTable("requests");
-    }
-
-    public function down(): void
-    {
-        $this->forge->dropTable("requests");
+        $this->forge->createTable("leave_apps");
     }
 }

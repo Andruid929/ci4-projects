@@ -3,11 +3,12 @@
 namespace App\Modules\InternalRequests\Models;
 
 use App\Core\Models\CoreModel;
+use CodeIgniter\Model;
 
 class InternalRequestModel extends CoreModel
 {
 
-    protected $table = "inter_reqs";
+
 
     protected function initialize(): void
     {
@@ -25,4 +26,5 @@ class InternalRequestModel extends CoreModel
     {
         return $this->where("request_type", $requestType)->findAll();
     }
+
 }

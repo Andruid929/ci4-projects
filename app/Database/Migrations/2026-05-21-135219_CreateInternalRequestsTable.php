@@ -10,7 +10,7 @@ class CreateInternalRequestsTable extends Migration
     {
         $this->forge->addField([
             "id" => [
-                "type"           => "BIGINT",
+                "type" => "BIGINT",
                 "auto_increment" => true,
             ],
             "employee_id" => [

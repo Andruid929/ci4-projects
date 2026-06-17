@@ -4,9 +4,14 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateSuperRequestsSuperTable extends Migration
+class RemoveInternalRequestsTable extends Migration
 {
     public function up()
+    {
+        $this->forge->dropTable("inter_reqs");
+    }
+
+    public function down()
     {
         $this->forge->addField([
             "id" => [
@@ -15,27 +20,22 @@ class CreateSuperRequestsSuperTable extends Migration
             ],
             "employee_id" => [
                 "type" => "VARCHAR",
-                "constraint" => 10
+                "constraint" => 10,
             ],
             "request_type" => [
+                "type" => "ENUM",
+                "constraint" => ["career_advancement", "compensation", "operational", "administrative"]
+            ],
+            "subject" => [
                 "type" => "VARCHAR",
-                "constraint" => 40
-            ],
-            "start_date" => [
-                "type" => "DATETIME"
-            ],
-            "end_date" => [
-                "type" => "DATETIME"
-            ],
-            "is_leave" => [
-                "type" => "BOOLEAN"
-            ],
-            "reason" => [
-                "type" => "TEXT",
+                "constraint" => 30
             ],
             "status" => [
                 "type" => "ENUM",
                 "constraint" => ["approved", "pending", "denied"]
+            ],
+            "description" => [
+                "type" => "TEXT"
             ],
             "approver_comment" => [
                 "type" => "TEXT"
@@ -50,13 +50,7 @@ class CreateSuperRequestsSuperTable extends Migration
                 "type" => "DATETIME"
             ]
         ]);
-
         $this->forge->addPrimaryKey("id");
-        $this->forge->createTable("requests");
-    }
-
-    public function down(): void
-    {
-        $this->forge->dropTable("requests");
+        $this->forge->createTable("inter_reqs");
     }
 }

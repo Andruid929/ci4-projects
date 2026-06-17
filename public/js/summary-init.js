@@ -75,7 +75,6 @@ $(document).ready(function () {
 
             const row = `
                 <tr>
-                    <td>#${req.id}</td>
                     <td>${typeLabel}</td>
                     <td>${req.employee_name || 'N/A'}</td>
                     <td>${statusBadge}</td>

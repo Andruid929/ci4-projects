@@ -14,4 +14,12 @@ class LeaveRequestsService extends CoreService
         return model(LeaveRequestsModel::class);
     }
 
+    public function createRequest(array $data): int
+    {
+        $data["is_leave"] = true;
+
+        return parent::createRequest($data);
+    }
+
+
 }

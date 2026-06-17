@@ -15,14 +15,14 @@ class CoreService
         $this->coreModel = $this->getModel();
     }
 
-    public function getRequestById(int $id)
+    public function getRequestById(int $id): array|object|null
     {
-        return $this->coreModel->find($id);
+        return $this->coreModel->getModelForRequests()->find($id);
     }
 
-    public function getRequestByIdIncludingDeleted(int $id)
+    public function getRequestByIdIncludingDeleted(int $id): object|array|null
     {
-        return $this->coreModel->findIncludingDeleted($id);
+        return $this->coreModel->getModelForRequests()->findIncludingDeleted($id);
     }
 
     public function createRequest(array $data): int
@@ -38,10 +38,10 @@ class CoreService
     public function getAllRequests(bool $includeDeleted = false): array|null
     {
         if ($includeDeleted) {
-            return $this->coreModel->withDeleted()->findAll();
+            return $this->coreModel->getModelForRequests()->withDeleted()->findAll();
         }
 
-        return $this->coreModel->findAll();
+        return $this->coreModel->getModelForRequests()->findAll();
     }
 
     public function getAllManagedRequests(): array|null
@@ -58,7 +58,7 @@ class CoreService
     {
         if ($approved) {
 
-            return $this->coreModel->where("status", StatusHelper::APPROVED)->findAll();
+            return $this->coreModel->getModelForRequests()->where("status", StatusHelper::APPROVED)->findAll();
         }
 
         return $this->coreModel->where("status", StatusHelper::DENIED)->findAll();
@@ -66,7 +66,7 @@ class CoreService
 
     public function getDeletedRequests(): array|null
     {
-        return $this->coreModel->onlyDeleted()->findAll();
+        return $this->coreModel->getModelForRequests()->onlyDeleted()->findAll();
     }
 
     public function getEmployeeRequests(string $employeeId): array|null

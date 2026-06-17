@@ -39,7 +39,7 @@
                     else: ?>
                         <div class="form-group">
                             <label for="leave_type">Leave Type</label>
-                            <select class="form-control" name="leave_type" id="leave_type" required>
+                            <select class="form-control" name="request_type" id="leave_type" required>
                                 <option value="sick">Sick</option>
                                 <option value="vacation">Vacation</option>
                                 <option value="personal">Personal</option>

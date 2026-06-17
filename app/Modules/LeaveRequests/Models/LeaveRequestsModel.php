@@ -3,11 +3,10 @@
 namespace App\Modules\LeaveRequests\Models;
 
 use App\Core\Models\CoreModel;
+use CodeIgniter\Model;
 
 class LeaveRequestsModel extends CoreModel
 {
-
-    protected $table = "leave_apps";
 
     protected function initialize(): void
     {
@@ -23,8 +22,13 @@ class LeaveRequestsModel extends CoreModel
 
     public function getByLeaveType(string $leaveType): array|null
     {
-        return $this->where("leave_type", $leaveType)->findAll();
+        return $this->where("request_type", $leaveType)->findAll();
     }
 
-    
+    protected function isLeaveRequest(): bool
+    {
+        return true;
+    }
+
+
 }

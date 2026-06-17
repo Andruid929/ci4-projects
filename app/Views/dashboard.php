@@ -105,7 +105,7 @@ $this->extend("layouts/main");
                         'createModalId' => 'createLeaveModal',
                         'viewDeleted' => $viewDeleted,
                         'columns' => [
-                                'Type' => 'leave_type',
+                                'Type' => 'request_type',
                                 'Start date' => 'start_date',
                                 'End date' => 'end_date',
                         ],

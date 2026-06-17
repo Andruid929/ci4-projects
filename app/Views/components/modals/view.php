@@ -12,7 +12,7 @@
             <div class="modal-body">
                 <div class="row mb-2">
                     <div class="col-4 font-weight-bold">Type:</div>
-                    <div class="col-8" id="view_<?= $type === 'internal' ? 'request' : 'leave' ?>_type"></div>
+                    <div class="col-8" id="view_request_type"></div>
                 </div>
 
                 <?php

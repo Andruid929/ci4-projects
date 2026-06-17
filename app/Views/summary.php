@@ -62,7 +62,6 @@ $this->extend("layouts/main");
                         <table class="table table-bordered" id="recentRequestsTable">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Type</th>
                                     <th>Employee</th>
                                     <th>Status</th>

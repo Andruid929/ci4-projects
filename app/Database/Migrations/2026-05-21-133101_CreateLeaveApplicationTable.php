@@ -11,7 +11,7 @@ class CreateLeaveApplicationTable extends Migration
     {
         $this->forge->addField([
             "id" => [
-                "type"           => "BIGINT",
+                "type" => "BIGINT",
                 "auto_increment" => true,
             ],
             "employee_id" => [
@@ -35,6 +35,17 @@ class CreateLeaveApplicationTable extends Migration
             "status" => [
                 "type" => "ENUM",
                 "constraint" => ["approved", "pending", "denied"]
+            ],
+            "request_type" => [
+                "type" => "ENUM",
+                "constraint" => ["career_advancement", "compensation", "operational", "administrative"]
+            ],
+            "subject" => [
+                "type" => "VARCHAR",
+                "constraint" => 30
+            ],
+            "description" => [
+                "type" => "TEXT"
             ],
             "approver_comment" => [
                 "type" => "TEXT"
