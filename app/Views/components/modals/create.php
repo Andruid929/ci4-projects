@@ -1,3 +1,9 @@
+<?php
+
+use App\Modules\InternalRequests\Helpers\InternalRequestTypeHelper;
+use App\Modules\LeaveRequests\Helpers\LeaveRequestTypesHelper;
+
+?>
 <div class="modal fade" id="<?= $modalId ?>" tabindex="-1" role="dialog" aria-labelledby="<?= $modalId ?>Label" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -15,13 +21,15 @@
                     
                     <?php
                     if ($type === 'internal'): ?>
+                    
                         <div class="form-group">
                             <label for="request_type">Request Type</label>
+                            
                             <select class="form-control" name="request_type" id="request_type" required>
-                                <option value="career_advancement">Career Advancement</option>
-                                <option value="compensation">Compensation</option>
-                                <option value="operational">Operational</option>
-                                <option value="administrative">Administrative</option>
+                                <option value="<?= InternalRequestTypeHelper::CAREER ?>">Career Advancement</option>
+                                <option value="<?= InternalRequestTypeHelper::COMPENSATION ?>">Compensation</option>
+                                <option value="<?= InternalRequestTypeHelper::OPERATIONAL ?>>">Operational</option>
+                                <option value="<?= InternalRequestTypeHelper::ADMINISTRATIVE ?>">Administrative</option>
                             </select>
                         </div>
                     
@@ -40,12 +48,12 @@
                         <div class="form-group">
                             <label for="leave_type">Leave Type</label>
                             <select class="form-control" name="request_type" id="leave_type" required>
-                                <option value="sick">Sick</option>
-                                <option value="vacation">Vacation</option>
-                                <option value="personal">Personal</option>
-                                <option value="bereavement">Bereavement</option>
-                                <option value="maternity">Maternity</option>
-                                <option value="unpaid">Unpaid</option>
+                                <option value="<?= LeaveRequestTypesHelper::SICK ?>>">Sick</option>
+                                <option value="<?= LeaveRequestTypesHelper::VACATION ?>">Vacation</option>
+                                <option value="<?= LeaveRequestTypesHelper::PERSONAL ?>">Personal</option>
+                                <option value="<?= LeaveRequestTypesHelper::BEREAVEMENT ?>">Bereavement</option>
+                                <option value="<?= LeaveRequestTypesHelper::MATERNITY ?>">Maternity</option>
+                                <option value="<?= LeaveRequestTypesHelper::UNPAID ?>">Unpaid</option>
                             </select>
                         </div>
                     

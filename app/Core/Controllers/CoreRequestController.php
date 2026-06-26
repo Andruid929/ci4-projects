@@ -7,7 +7,9 @@ use App\Core\Services\CoreService;
 use App\Helpers\RolesHelper;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
+use Exception;
 use Psr\Log\LoggerInterface;
+use Throwable;
 
 abstract class CoreRequestController extends BaseController
 {
@@ -31,50 +33,47 @@ abstract class CoreRequestController extends BaseController
                 "success" => true,
                 "data" => $data
             ])->setStatusCode(200);
-
         } else {
             log_message('error', 'Failed to view request: ' . $id . ' - Not found');
 
-            return $this->response->setJSON([
-                "success" => false,
-                "message" => "Request not found"
-            ])->setStatusCode(404);
+            return $this->respond(false, "Request not found", 404);
         }
     }
 
     public function edit(int $id): ResponseInterface
     {
-        if (!$this->service->getRequestById($id)) {
-            log_message('error', 'Failed to edit request: ' . $id . ' - Not found');
+        try {
+            if (!$this->service->getRequestById($id)) {
+                log_message('error', 'Failed to edit request: ' . $id . ' - Not found');
 
-            return $this->respondWithNotFound();
-        }
+                return $this->respondWithNotFound();
+            }
 
-        if (!$this->validateInfo()) {
-            log_message('error', 'Failed to edit request: ' . $id . ' - Validation errors');
+            if (!$this->validateInfo()) {
+                log_message('error', 'Failed to edit request: ' . $id . ' - Validation errors');
 
-            return $this->respondWithValidationErrors();
-        }
+                return $this->respondWithValidationErrors();
+            }
 
-        $infoToUpdate = $this->request->getPost();
+            $infoToUpdate = $this->request->getPost();
 
-        $result = $this->service->editRequest($id, $infoToUpdate);
+            $result = $this->service->editRequest($id, $infoToUpdate);
 
-        if ($result) {
-            log_message('info', 'Request edited successfully: ' . $id . ' by user ' . auth()->user()->employee_id);
+            if ($result) {
+                log_message('info', 'Request edited successfully: ' . $id . ' by user ' . auth()->user()->employee_id);
 
-            return $this->response->setJSON([
-                "success" => true,
-                "message" => "Request edited successfully"
-            ])->setStatusCode(200);
+                return $this->respond(true, "This request is not deleted and cannot be restored", 200);
 
-        } else {
-            log_message('error', 'Failed to edit request: ' . $id);
+            } else {
+                log_message('error', 'Failed to edit request: ' . $id);
 
-            return $this->response->setJSON([
-                "success" => false,
-                "message" => "Failed to edit request, try again"
-            ])->setStatusCode(500);
+                return $this->respond(false, "Failed to edit request, try again", 500);
+            }
+        } catch (Throwable $e) {
+            log_message('error', 'Failed to create request by user ' . auth()->user()->employee_id . ' - Unhandled error:
+                        ' . $e->getTraceAsString());
+
+            return $this->respond(false, "Something happened on our end, try again later", 500);
         }
     }
 
@@ -107,10 +106,7 @@ abstract class CoreRequestController extends BaseController
         if (!in_array($status, ['approved', 'denied'])) {
             log_message('error', 'Failed to handle request: ' . $id . ' - Invalid status: ' . $status);
 
-            return $this->response->setJSON([
-                "success" => false,
-                "message" => "Invalid status"
-            ])->setStatusCode(400);
+            return $this->respond(false, "Invalid status", 400);
         }
 
         $result = $this->service->updateRequestStatus($id, $status, $comment);
@@ -118,51 +114,54 @@ abstract class CoreRequestController extends BaseController
         if ($result) {
             log_message('info', 'Request ' . $status . ' successfully: ' . $id . ' by user ' . auth()->user()->employee_id);
 
-            return $this->response->setJSON([
-                "success" => true,
-                "message" => "Request has been " . $status
-            ])->setStatusCode(200);
+            return $this->respond(true, "Request has been  . $status", 200);
         }
 
         log_message('error', 'Failed to update request status: ' . $id);
 
-        return $this->response->setJSON([
-            "success" => false,
-            "message" => "Failed to update request status"
-        ])->setStatusCode(500);
+        return $this->respond(false, "Failed to update request status", 500);
     }
 
     public function create(): ResponseInterface
     {
-        if (!$this->validateInfo()) {
-            log_message('error', 'Failed to create request - Validation errors');
+        try {
 
-            return $this->respondWithValidationErrors();
-        }
+            if (!$this->validateInfo()) {
+                log_message('error', 'Failed to create request - Validation errors');
 
-        $currentEmployeeId = auth()->user()->employee_id;
+                return $this->respondWithValidationErrors();
+            }
 
-        $infoToInsert = $this->request->getPost();
-        $infoToInsert['employee_id'] = $currentEmployeeId;
-        $infoToInsert['status'] = 'pending';
+            $currentEmployeeId = auth()->user()->employee_id;
 
-        $result = $this->service->createRequest($infoToInsert);
+            $infoToInsert = $this->request->getPost();
+            $infoToInsert['employee_id'] = $currentEmployeeId;
+            $infoToInsert['status'] = 'pending';
 
-        if ($result) {
-            log_message('info', 'Request created successfully by user ' . $currentEmployeeId);
+            $result = $this->service->createRequest($infoToInsert);
 
-            return $this->response->setJSON([
-                "success" => true,
-                "message" => "Request created successfully"
-            ])->setStatusCode(201);
+            if ($result) {
 
-        } else {
+                if ($result === -1) {
+                    log_message('info', 'Invalid request type provided');
+
+                    return $this->respond(false, "Given request type is invalid", 400);
+                }
+
+                log_message('info', 'Request created successfully by user ' . $currentEmployeeId);
+
+                return $this->respond(true, "Request created successfully", 201);
+            }
+
             log_message('error', 'Failed to create request by user ' . auth()->user()->employee_id . ' - Database error');
 
-            return $this->response->setJSON([
-                "success" => false,
-                "message" => "Failed to create request, try again"
-            ])->setStatusCode(500);
+            return $this->respond(false, "Failed to create request, try again", 500);
+
+        } catch (Throwable $e) {
+            log_message('error', 'Failed to create request by user ' . auth()->user()->employee_id . ' - Unhandled error:
+                        ' . $e->getTraceAsString());
+
+            return $this->respond(false, "Something happened on our end, try again later", 500);
         }
     }
 
@@ -182,39 +181,26 @@ abstract class CoreRequestController extends BaseController
             if ($request['employee_id'] !== $user->employee_id) {
                 log_message('error', 'Failed to delete request: ' . $id . ' - Unauthorized access by user ' . $user->employee_id);
 
-                return $this->response->setJSON([
-                    "success" => false,
-                    "message" => "You are not authorized to delete this request"
-                ])->setStatusCode(403);
+                return $this->respond(false, "You are not authorized to delete this request", 403);
             }
 
             if ($request['status'] !== 'pending') {
                 log_message('error', 'Failed to delete request: ' . $id . ' - Request not in pending status');
 
-                return $this->response->setJSON([
-                    "success" => false,
-                    "message" => "Only pending requests can be deleted"
-                ])->setStatusCode(400);
+                return $this->respond(false, "Only pending requests can be deleted", 400);
             }
-
         }
         $result = $this->service->deleteRequest($id);
 
         if ($result) {
             log_message('info', 'Request deleted successfully: ' . $id . ' by user ' . $user->employee_id);
 
-            return $this->response->setJSON([
-                "success" => true,
-                "message" => "Request deleted successfully"
-            ])->setStatusCode(200);
+            return $this->respond(true, "Request deleted successfully", 200);
 
         } else {
             log_message('error', 'Failed to delete request: ' . $id . ' - Database error');
 
-            return $this->response->setJSON([
-                "success" => false,
-                "message" => "Failed to delete request, try again"
-            ])->setStatusCode(500);
+            return $this->respond(false, "Failed to delete request, try again", 500);
         }
     }
 
@@ -225,10 +211,7 @@ abstract class CoreRequestController extends BaseController
         if (!$user->inGroup(RolesHelper::ADMIN)) {
             log_message('error', 'Failed to restore request: ' . $id . ' - Unauthorized access by user ' . $user->employee_id);
 
-            return $this->response->setJSON([
-                "success" => false,
-                "message" => "You are not authorized to restore requests"
-            ])->setStatusCode(403);
+            return $this->respond(false, "You are not authorized to restore requests", 403);
         }
 
         $request = $this->service->getRequestByIdIncludingDeleted($id);
@@ -242,10 +225,8 @@ abstract class CoreRequestController extends BaseController
         if (!isset($request['deleted_at'])) {
             log_message('error', 'Failed to restore request: ' . $id . ' - Request is not deleted');
 
-            return $this->response->setJSON([
-                "success" => false,
-                "message" => "This request is not deleted and cannot be restored"
-            ])->setStatusCode(400);
+            return $this->respond(false, "This request is not deleted and cannot be restored", 400);
+
         }
 
         $result = $this->service->restoreRequest($id);
@@ -253,19 +234,21 @@ abstract class CoreRequestController extends BaseController
         if ($result) {
             log_message('info', 'Request restored successfully: ' . $id . ' by user ' . $user->employee_id);
 
-            return $this->response->setJSON([
-                "success" => true,
-                "message" => "Request restored successfully"
-            ])->setStatusCode(200);
-            
+            return $this->respond(true, "Request restored successfully", 200);
+
         } else {
             log_message('error', 'Failed to restore request: ' . $id . ' - Database error');
 
-            return $this->response->setJSON([
-                "success" => false,
-                "message" => "Failed to restore request, try again"
-            ])->setStatusCode(500);
+             return $this->respond(false, "Failed to restore request, try again", 500);
         }
+    }
+
+    protected function respond(bool $success, string $message, int $responseCode): ResponseInterface
+    {
+        return $this->response->setJSON([
+            "success" => $success,
+            "message" => $message
+        ])->setStatusCode($responseCode);
     }
 
     protected function respondWithValidationErrors(): ResponseInterface
